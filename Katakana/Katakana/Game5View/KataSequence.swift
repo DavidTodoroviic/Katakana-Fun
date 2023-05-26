@@ -15,7 +15,7 @@ struct GlobalFunctions1 {
     static func getKat() {
         
         if randomWord == "icecream" {
-            providedCharacters = ["ア","イ","ス","ク","リー","ム"]
+            providedCharacters = ["ア","イ","ス","ク","リ","ー","ム"]
         }
         else if randomWord == "apartment" {
             providedCharacters = ["ア","パ","ー","ト","リ","ム","ス"]

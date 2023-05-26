@@ -10,7 +10,7 @@ import AVFoundation
 import UIKit
 
 var randomWord = ""
-var providedCharacters = ["ア","イ","ス","ク","リ","ーム","テ"]
+var providedCharacters = ["ア","イ","ス","ク","リ","ー","ム"]
 var audioPlayer: AVAudioPlayer?
 
 struct GameScreenView5: View {
@@ -342,9 +342,9 @@ struct GameScreenView5: View {
         
         //Check word if correct add score plus reset game
         func checkWord() {
-            for word in wordList {
+                print(wordList)
                 //if correct
-                if currentWord == word {
+               if wordList.contains(currentWord) {
                     showAlert(title: "Congratulations!", message: "You spelled the word correctly!")
                     //add score
                     playCorrectSound()
@@ -362,7 +362,7 @@ struct GameScreenView5: View {
                     return
                 }
                 //if not
-                if currentWord != word {
+            if !wordList.contains(currentWord) {
                     //vibration feedback
                     let generator = UINotificationFeedbackGenerator()
                     generator.notificationOccurred(.success)
@@ -370,7 +370,7 @@ struct GameScreenView5: View {
                     return
                 }
             }
-        }
+        
     //play error sound
     func playErrorSound() {
         guard let soundURL = Bundle.main.url(forResource: "Error", withExtension: "wav") else {
