@@ -125,10 +125,13 @@ struct GameScreenView5: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
                     .onTapGesture {
-                        //shuffle the katakana
-                        providedCharacters.shuffle()
                         //random english word
                         randomWord = englishWords.randomElement() ?? ""
+                        //get katakana that matches the word
+                        GlobalFunctions1.getKat()
+                        //shuffle the katakana
+                        providedCharacters.shuffle()
+                        //start timer
                         Started()
                            }
                    }
@@ -329,6 +332,8 @@ struct GameScreenView5: View {
         generator.notificationOccurred(.success)
         //change english word
         randomWord = englishWords.randomElement() ?? ""
+        //get katakana that matches the word
+        GlobalFunctions1.getKat()
         //shuffle the katakana
         providedCharacters.shuffle()
         currentWord = ""
@@ -346,6 +351,8 @@ struct GameScreenView5: View {
                     score += 1
                     //change english word
                     randomWord = englishWords.randomElement() ?? ""
+                    //get katakana that matches the word
+                    GlobalFunctions1.getKat()
                     //shuffle the katakana
                     providedCharacters.shuffle()
                     clearGame()
