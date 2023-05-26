@@ -158,132 +158,133 @@ struct GlobalFunctions1 {
         else if randomWord == "model" {
             providedCharacters = ["モ","デ","ル","イ","チ","バ","メ"]
         }
-            else if randomWord == "knife" {
-                providedCharacters = ["ナ", "イ", "フ"]
-            }
-            else if randomWord == "net" {
-                providedCharacters = ["ネ", "ット"]
-            }
-            else if randomWord == "noodle" {
-                providedCharacters = ["ヌ", "ー", "ド", "ル"]
-            }
-            else if randomWord == "Australia" {
-                providedCharacters = ["オ", "ー", "ス", "ト", "ラ", "リ", "ア"]
-            }
-            else if randomWord == "orange" {
-                providedCharacters = ["オ", "レ", "ン", "ジ"]
-            }
-            else if randomWord == "pants" {
-                providedCharacters = ["パ", "ン", "ツ"]
-            }
-            else if randomWord == "passport" {
-                providedCharacters = ["パ", "ス", "ポ", "ー", "ト"]
-            }
-            else if randomWord == "pasta" {
-                providedCharacters = ["パ", "ス", "タ"]
-            }
-            else if randomWord == "pen" {
-                providedCharacters = ["ペ", "ン"]
-            }
-            else if randomWord == "pet" {
-                providedCharacters = ["ペ", "ッ", "ト"]
-            }
-            else if randomWord == "piano" {
-                providedCharacters = ["ピ", "ア", "ノ"]
-            }
-            else if randomWord == "pink" {
-                providedCharacters = ["ピ", "ン", "ク"]
-            }
-            else if randomWord == "pizza" {
-                providedCharacters = ["ピ", "ッ", "ツ", "ァ"]
-            }
-            else if randomWord == "potato" {
-                providedCharacters = ["ポ", "テ", "ト"]
-            }
-            else if randomWord == "plum" {
-                providedCharacters = ["プ", "ラ", "ム"]
-            }
-            else if randomWord == "pool" {
-                providedCharacters = ["プ", "ー", "ル"]
-            }
-            else if randomWord == "line" {
-                providedCharacters = ["ラ", "イ", "ン"]
-            }
-            else if randomWord == "register" {
-                providedCharacters = ["レ", "ジ", "ス", "タ", "ー"]
-            }
-            else if randomWord == "lemon" {
-                providedCharacters = ["レ", "モ", "ン"]
-            }
-            else if randomWord == "restaurant" {
-                providedCharacters = ["レ", "ス", "ト", "ラン", "ト"]
-            }
-            else if randomWord == "rocket" {
-                providedCharacters = ["ロ", "ケ", "ット"]
-            }
-            else if randomWord == "rope" {
-                providedCharacters = ["ロ", "ー", "プ"]
-            }
-            else if randomWord == "rule" {
-                providedCharacters = ["ル", "ー", "ル"]
-            }
-            else if randomWord == "surfboard" {
-                providedCharacters = ["サ", "ー", "フ", "ボ", "ー", "ド"]
-            }
-            else if randomWord == "soccer" {
-                providedCharacters = ["サ", "ッ", "カ", "ー"]
-            }
-            else if randomWord == "salad" {
-                providedCharacters = ["サ", "ラ", "ダ"]
-            }
-            else if randomWord == "sweater" {
-                providedCharacters = ["ス", "ウ", "ェ", "ッ", "タ", "ー"]
-            }
-            else if randomWord == "set" {
-                providedCharacters = ["セ", "ッ", "ト"]
-            }
-            else if randomWord == "sheet" {
-                providedCharacters = ["シ", "ー", "ト"]
-            }
-            else if randomWord == "singer" {
-                providedCharacters = ["シ", "ン", "ガ", "ー"]
-            }
-            else if randomWord == "soft" {
-                providedCharacters = ["ソ", "フ", "ト"]
-            }
-            else if randomWord == "sports" {
-                providedCharacters = ["ス", "ポ", "ー", "ツ"]
-            }
-            else if randomWord == "steak" {
-                providedCharacters = ["ス", "テ", "ー", "キ"]
-            }
-            else if randomWord == "stereo" {
-                providedCharacters = ["ス", "テ", "レ", "オ"]
-            }
-            else if randomWord == "taxi" {
-                providedCharacters = ["タ", "ク", "シ"]
-            }
-            else if randomWord == "tennis" {
-                providedCharacters = ["テ", "ニ", "ス"]
-            }
-            else if randomWord == "tent" {
-                providedCharacters = ["テ", "ント"]
-            }
-            else if randomWord == "test" {
-                providedCharacters = ["テ", "ス", "ト"]
-            }
-            else if randomWord == "toilet" {
-                providedCharacters = ["ト", "イ", "レ", "ット"]
-            }
-            else if randomWord == "tomato" {
-                providedCharacters = ["ト", "マ", "ト"]
-            }
-            else if randomWord == "training" {
-                providedCharacters = ["ト", "レ", "ー", "ニ", "ン", "グ"]
-            }
-            else if randomWord == "wine" {
-                providedCharacters = ["ワ", "イ", "ン"]
-            }
+        if randomWord == "knife" {
+            providedCharacters = ["ナ","イ","フ","ネ","ロ","ス","オ"]
         }
+        else if randomWord == "net" {
+            providedCharacters = ["ネ","ッ","ト","ラ","ジ","ソ","テ"]
+        }
+        else if randomWord == "noodle" {
+            providedCharacters = ["ヌ","ー","ド","ル","セ","ハ","ナ"]
+        }
+        else if randomWord == "Australia" {
+            providedCharacters = ["オ","ー","ス","ト","ラ","リ","ア"]
+        }
+        else if randomWord == "orange" {
+            providedCharacters = ["オ","レ","ン","ジ","フ","ラ","ウ"]
+        }
+        else if randomWord == "pants" {
+            providedCharacters = ["パ","ン","ツ","ペ","ケ","チ","ソ"]
+        }
+        else if randomWord == "passport" {
+            providedCharacters = ["パ","ス","ポ","ー","ト","ソ","リ"]
+        }
+        else if randomWord == "pasta" {
+            providedCharacters = ["パ","ス","タ","ナ","ラ","ダ","ポ"]
+        }
+        else if randomWord == "pen" {
+            providedCharacters = ["ペ","ン","ケ","ナ","ソ","チ","テ"]
+        }
+        else if randomWord == "pet" {
+            providedCharacters = ["ペ","ッ","ト","ス","ベ","マ","ケ"]
+        }
+        else if randomWord == "piano" {
+            providedCharacters = ["ピ","ア","ノ","フ","ン","ジ","ダ"]
+        }
+        else if randomWord == "pink" {
+            providedCharacters = ["ピ","ン","ク","カ","フ","ナ","セ"]
+        }
+        else if randomWord == "pizza" {
+            providedCharacters = ["ピ","ザ","パ","ダ","ヒ","タ","ア"]
+        }
+        else if randomWord == "potato" {
+            providedCharacters = ["ポ","テ","ト","ベ","ペ","ワ","シ"]
+        }
+        else if randomWord == "plum" {
+            providedCharacters = ["プ","ラ","ム","チ","フ","ロ","ナ"]
+        }
+        else if randomWord == "pool" {
+            providedCharacters = ["プ","ー","ル","シ","フ","オ","セ"]
+        }
+        else if randomWord == "line" {
+            providedCharacters = ["ラ","イ","ン","ペ","レ","ソ","ジ"]
+        }
+        else if randomWord == "register" {
+            providedCharacters = ["レ","ジ","フ","チ","ナ","ン","エ"]
+        }
+        else if randomWord == "lemon" {
+            providedCharacters = ["レ","モ","ン","イ","ソ","フ","ソ"]
+        }
+        else if randomWord == "restaurant" {
+            providedCharacters = ["レ","ス","ト","ラ","ン","ウ","ペ"]
+        }
+        else if randomWord == "rocket" {
+            providedCharacters = ["ロ","ケ","ッ","ト","ワ","マ","キ"]
+        }
+        else if randomWord == "rope" {
+            providedCharacters = ["ロ","ー","プ","マ","シ","リ","ト"]
+        }
+        else if randomWord == "rule" {
+            providedCharacters = ["ル","ー","ル","ロ","ダ","ジ","セ"]
+        }
+        else if randomWord == "surfboard" {
+            providedCharacters = ["サ","ー","フ","ボ","ー","ド","プ"]
+        }
+        else if randomWord == "soccer" {
+            providedCharacters = ["サ","ッ","カ","ー","フ","ス","ア"]
+        }
+        else if randomWord == "salad" {
+            providedCharacters = ["サ","ラ","ダ","ド","イ","キ","ヒ"]
+        }
+        else if randomWord == "sweater" {
+            providedCharacters = ["セ","ー","タ","ー","ナ","ド","テ"]
+        }
+        else if randomWord == "set" {
+            providedCharacters = ["セ","ッ","ト","ン","ラ","ジ","ネ"]
+        }
+        else if randomWord == "sheet" {
+            providedCharacters = ["シ","ー","ト","ロ","ネ","テ","オ"]
+        }
+        else if randomWord == "singer" {
+            providedCharacters = ["シ","ン","ガ","ー","ベ","ネ","ケ"]
+        }
+        else if randomWord == "soft" {
+            providedCharacters = ["ソ","フ","ト","ポ","テ","キ","ヒ"]
+        }
+        else if randomWord == "sports" {
+            providedCharacters = ["ス","ポ","ー","ツ","フ","エ","タ"]
+        }
+        else if randomWord == "steak" {
+            providedCharacters = ["ス","テ","ー","キ","ト","チ","マ"]
+        }
+        else if randomWord == "stereo" {
+            providedCharacters = ["ス","テ","レ","オ","キ","ハ","ウ"]
+        }
+        else if randomWord == "taxi" {
+            providedCharacters = ["タ","ク","シ","ー","ト","オ","ラ"]
+        }
+        else if randomWord == "tennis" {
+            providedCharacters = ["テ","ニ","ス","フ","イ","オ","ヒ"]
+        }
+        else if randomWord == "tent" {
+            providedCharacters = ["テ","ン","ト","ア","ワ","ケ","ネ"]
+        }
+        else if randomWord == "test" {
+            providedCharacters = ["テ","ス","ト","キ","ソ","ク","ナ"]
+        }
+        else if randomWord == "toilet" {
+            providedCharacters = ["ト","イ","レ","ネ","ハ","ク","ソ"]
+        }
+        else if randomWord == "tomato" {
+            providedCharacters = ["ト","マ","ト","ベ","イ","ロ","ラ"]
+        }
+        else if randomWord == "training" {
+            providedCharacters = ["ト","レ","ー","ニ","ン","グ","ア"]
+        }
+        else if randomWord == "wine" {
+            providedCharacters = ["ワ","イ","ン","ト","タ","ア","フ"]
+        }
+
     }
+}
 
