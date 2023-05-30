@@ -19,7 +19,7 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 // Add the background image
-                Image("Katakana cards stars BG")
+                Image("Faded BG")
                     .resizable()
                     .scaledToFill()
                     .scaleEffect(1.1)
