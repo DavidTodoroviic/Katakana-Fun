@@ -176,7 +176,7 @@ struct GameScreenView5: View {
                         HStack{
                             //english word
                             Text(randomWord)
-                                .font(.title2)
+                                .font(.myFonts("comicsans", size: 20))
                                 .fontWeight(.bold)
                                 .padding(20)
                                 .background(Color.white)
@@ -185,7 +185,7 @@ struct GameScreenView5: View {
                             //hint
                             Button(action: GlobalFunctions.getHint) {
                                 Text("?")
-                                    .font(.title2)
+                                    .font(.myFonts("comicsans", size: 20))
                                     .fontWeight(.bold)
                                     .padding()
                                     .background(Color.white)
@@ -306,7 +306,7 @@ struct GameScreenView5: View {
                 generator.notificationOccurred(.success)
             }) {
                 Text(String(character))
-                    .font(.title2)
+                    .font(.myFonts("UDDigiKyokashoN-B", size: 20))
                     .fontWeight(.bold)
                     .padding(20)
                     .background(Color.white)

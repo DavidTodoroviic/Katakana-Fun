@@ -12,6 +12,9 @@
 		1615AF8D2A1E4CBC003E419F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615AF8C2A1E4CBC003E419F /* File.swift */; };
 		1642926B2A20A39200B49BCA /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 164292692A20A39200B49BCA /* Error.wav */; };
 		1642926C2A20A39200B49BCA /* Win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1642926A2A20A39200B49BCA /* Win.wav */; };
+		165CAF082A2644760045AB1C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CAF072A2644760045AB1C /* Fonts.swift */; };
+		165CAF0B2A2645E70045AB1C /* Win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165CAF092A2645E70045AB1C /* Win.wav */; };
+		165CAF0C2A2645E70045AB1C /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 165CAF0A2A2645E70045AB1C /* Error.wav */; };
 		1675E12A2A24353900563BD7 /* miruku.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1675E0D02A24353700563BD7 /* miruku.mp3 */; };
 		1675E12B2A24353900563BD7 /* tesuto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1675E0D12A24353700563BD7 /* tesuto.mp3 */; };
 		1675E12C2A24353900563BD7 /* toire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1675E0D22A24353700563BD7 /* toire.mp3 */; };
@@ -155,6 +158,11 @@
 		1615AF8C2A1E4CBC003E419F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		164292692A20A39200B49BCA /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Error.wav; path = ../../../../../Desktop/Sounds/Error.wav; sourceTree = "<group>"; };
 		1642926A2A20A39200B49BCA /* Win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Win.wav; path = ../../../../../Desktop/Sounds/Win.wav; sourceTree = "<group>"; };
+		165CAF052A2643FE0045AB1C /* comicsans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = comicsans.ttf; path = "../../../../../Desktop/Font files/comicsans.ttf"; sourceTree = "<group>"; };
+		165CAF062A2643FE0045AB1C /* UDDigiKyokashoN-B.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = "UDDigiKyokashoN-B.ttc"; path = "../../../../../Desktop/Font files/UDDigiKyokashoN-B.ttc"; sourceTree = "<group>"; };
+		165CAF072A2644760045AB1C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		165CAF092A2645E70045AB1C /* Win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Win.wav; path = ../../../../../Desktop/Sounds/Win.wav; sourceTree = "<group>"; };
+		165CAF0A2A2645E70045AB1C /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Error.wav; path = ../../../../../Desktop/Sounds/Error.wav; sourceTree = "<group>"; };
 		1675E0D02A24353700563BD7 /* miruku.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = miruku.mp3; path = "../../../../../Desktop/Vocab audio files_KATAKANA APP/miruku.mp3"; sourceTree = "<group>"; };
 		1675E0D12A24353700563BD7 /* tesuto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tesuto.mp3; path = "../../../../../Desktop/Vocab audio files_KATAKANA APP/tesuto.mp3"; sourceTree = "<group>"; };
 		1675E0D22A24353700563BD7 /* toire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = toire.mp3; path = "../../../../../Desktop/Vocab audio files_KATAKANA APP/toire.mp3"; sourceTree = "<group>"; };
@@ -306,10 +314,21 @@
 		1615AF7D2A1E165D003E419F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				165CAF0A2A2645E70045AB1C /* Error.wav */,
+				165CAF092A2645E70045AB1C /* Win.wav */,
 				164292692A20A39200B49BCA /* Error.wav */,
 				1642926A2A20A39200B49BCA /* Win.wav */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		165CAF042A2643F10045AB1C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				165CAF052A2643FE0045AB1C /* comicsans.ttf */,
+				165CAF062A2643FE0045AB1C /* UDDigiKyokashoN-B.ttc */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		1675E0CF2A24352200563BD7 /* Vocab audio */ = {
@@ -417,6 +436,7 @@
 				1615AF882A1E409E003E419F /* Hint.swift */,
 				1615AF8A2A1E47AB003E419F /* KataSequence.swift */,
 				1615AF8C2A1E4CBC003E419F /* File.swift */,
+				165CAF072A2644760045AB1C /* Fonts.swift */,
 			);
 			path = Game5View;
 			sourceTree = "<group>";
@@ -434,6 +454,7 @@
 		3EC6746429FF4A1100F1C8E3 = {
 			isa = PBXGroup;
 			children = (
+				165CAF042A2643F10045AB1C /* Fonts */,
 				1675E0CF2A24352200563BD7 /* Vocab audio */,
 				1615AF7D2A1E165D003E419F /* Sounds */,
 				3EC6746F29FF4A1100F1C8E3 /* Katakana */,
@@ -640,6 +661,7 @@
 				1642926B2A20A39200B49BCA /* Error.wav in Resources */,
 				1675E1772A24353A00563BD7 /* gorufu.mp3 in Resources */,
 				1675E15C2A24353900563BD7 /* piza.mp3 in Resources */,
+				165CAF0C2A2645E70045AB1C /* Error.wav in Resources */,
 				1675E1332A24353900563BD7 /* geemu.mp3 in Resources */,
 				1675E1422A24353900563BD7 /* gifuto.mp3 in Resources */,
 				1675E1552A24353900563BD7 /* roopu.mp3 in Resources */,
@@ -696,6 +718,7 @@
 				3EC6747829FF4A1200F1C8E3 /* Preview Assets.xcassets in Resources */,
 				1675E1612A24353A00563BD7 /* doramu.mp3 in Resources */,
 				1675E1622A24353A00563BD7 /* apaato.mp3 in Resources */,
+				165CAF0B2A2645E70045AB1C /* Win.wav in Resources */,
 				1675E13B2A24353900563BD7 /* piano.mp3 in Resources */,
 				1675E17B2A24353A00563BD7 /* booringu.mp3 in Resources */,
 				1675E1592A24353900563BD7 /* petto.mp3 in Resources */,
@@ -749,6 +772,7 @@
 				1615AF8B2A1E47AB003E419F /* KataSequence.swift in Sources */,
 				3E451A8D29FF52BB000653D3 /* Game2View.swift in Sources */,
 				16B93A022A0CD4B700AAEC70 /* Game5MainView.swift in Sources */,
+				165CAF082A2644760045AB1C /* Fonts.swift in Sources */,
 				3E8268AD2A14A07500F99048 /* GameInfoView.swift in Sources */,
 				3E451A8F29FF52CA000653D3 /* Game3View.swift in Sources */,
 				C3A6E8DE2A1C756C00309AE8 /* Game3MainView.swift in Sources */,
