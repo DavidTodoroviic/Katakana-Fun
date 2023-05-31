@@ -143,29 +143,29 @@ struct GameScreenView5: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
-                // Time's UP! image
-                GeometryReader { geometry in
-                    Image("Times up")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: min(geometry.size.width, geometry.size.height) * 0.8, height: min(geometry.size.width, geometry.size.height) * 0.8)
-                        .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.25)
-                }
                 VStack{
+                    // Time's UP! image
+                    GeometryReader { geometry in
+                        Image("Times up")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: min(geometry.size.width, geometry.size.height) * 0.8, height: min(geometry.size.width, geometry.size.height) * 0.8)
+                            .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.25)
+                    }
                     HStack{
                         Text("Your score: \(score)")
                     }
                     //Back button
                     NavigationLink(destination: ContentView()) {
                         VStack {
-                            Image("Home Button")
+                            Image("Menu Button")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 150, height: 150)
                         }
                     }
                 }
-            }
+             }
             }
         
             //Game Start screen
@@ -302,7 +302,7 @@ struct GameScreenView5: View {
             timeRemaining = 120 // Reset the timer to 2 minutes
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if timeRemaining > 0 {
-                    timeRemaining -= 1
+                    timeRemaining -= 60
                 } else {
                     timer.invalidate()
                 }
