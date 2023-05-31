@@ -138,10 +138,27 @@ struct GameScreenView5: View {
         }
         //Time's up screen
         if timeRemaining == 0 {
-                    Image("Game 5 win")
+            ZStack{
+                Image("Game 5 win 1")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
+                Image("Times up")
+                VStack{
+                    HStack{
+                        Text("Your score: \(score)")
+                    }
+                    //Back button
+                    NavigationLink(destination: ContentView()) {
+                        VStack {
+                            Image("Home Button")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 150, height: 150)
+                        }
+                    }
+                }
+            }
             }
         
             //Game Start screen
