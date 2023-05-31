@@ -112,7 +112,6 @@
 		3E451A8D29FF52BB000653D3 /* Game2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A8C29FF52BB000653D3 /* Game2View.swift */; };
 		3E451A8F29FF52CA000653D3 /* Game3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A8E29FF52CA000653D3 /* Game3View.swift */; };
 		3E451A9129FF52E0000653D3 /* Game4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A9029FF52E0000653D3 /* Game4View.swift */; };
-		3E451A9329FF52F3000653D3 /* Game5View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A9229FF52F3000653D3 /* Game5View.swift */; };
 		3E451A9529FF5310000653D3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A9429FF5310000653D3 /* InfoView.swift */; };
 		3E5B2D652A0B3BE9004DC079 /* Game4MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B2D642A0B3BE9004DC079 /* Game4MainView.swift */; };
 		3E5B2D672A0B3C17004DC079 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B2D662A0B3C17004DC079 /* GameScreenView.swift */; };
@@ -258,7 +257,6 @@
 		3E451A8C29FF52BB000653D3 /* Game2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game2View.swift; sourceTree = "<group>"; };
 		3E451A8E29FF52CA000653D3 /* Game3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game3View.swift; sourceTree = "<group>"; };
 		3E451A9029FF52E0000653D3 /* Game4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game4View.swift; sourceTree = "<group>"; };
-		3E451A9229FF52F3000653D3 /* Game5View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game5View.swift; sourceTree = "<group>"; };
 		3E451A9429FF5310000653D3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		3E5B2D642A0B3BE9004DC079 /* Game4MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game4MainView.swift; sourceTree = "<group>"; };
 		3E5B2D662A0B3C17004DC079 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
@@ -480,7 +478,6 @@
 				3E451A8C29FF52BB000653D3 /* Game2View.swift */,
 				3E451A8E29FF52CA000653D3 /* Game3View.swift */,
 				3E451A9029FF52E0000653D3 /* Game4View.swift */,
-				3E451A9229FF52F3000653D3 /* Game5View.swift */,
 				3E451A9429FF5310000653D3 /* InfoView.swift */,
 				3E451A8A29FF50E3000653D3 /* Game1View.swift */,
 				3E451A8829FF4E33000653D3 /* KatakanaFlashcardsView.swift */,
@@ -781,7 +778,6 @@
 				3EC6747329FF4A1100F1C8E3 /* ContentView.swift in Sources */,
 				3E451A9129FF52E0000653D3 /* Game4View.swift in Sources */,
 				3E451A8B29FF50E3000653D3 /* Game1View.swift in Sources */,
-				3E451A9329FF52F3000653D3 /* Game5View.swift in Sources */,
 				C3A6E8E62A1CF6C600309AE8 /* testfile.swift in Sources */,
 				1615AF892A1E409E003E419F /* Hint.swift in Sources */,
 				3EC6747129FF4A1100F1C8E3 /* KatakanaApp.swift in Sources */,
