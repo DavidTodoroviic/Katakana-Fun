@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-//japaneseScriptFont: String = "UDDigiKyokashoN-B"
-//var englishFont: String = "Comic Sans MS"
+//"UDDigiKyokashoN-B"
+//"Comic Sans MS"
 
 struct FontsManager {
         static let EngFont = "Comic Sans MS"
