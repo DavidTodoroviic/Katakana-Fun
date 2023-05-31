@@ -176,8 +176,7 @@ struct GameScreenView5: View {
                         HStack{
                             //english word
                             Text(randomWord)
-                                .font(.myFonts("comicsans", size: 20))
-                                .fontWeight(.bold)
+                                .font(Font.custom("Comic Sans MS", size: 30))
                                 .padding(20)
                                 .background(Color.white)
                                 .foregroundColor(.black)
@@ -185,8 +184,7 @@ struct GameScreenView5: View {
                             //hint
                             Button(action: GlobalFunctions.getHint) {
                                 Text("?")
-                                    .font(.myFonts("comicsans", size: 20))
-                                    .fontWeight(.bold)
+                                    .font(Font.custom(FontsManager.EngFont, size: 30))
                                     .padding()
                                     .background(Color.white)
                                     .foregroundColor(.black)
@@ -306,8 +304,7 @@ struct GameScreenView5: View {
                 generator.notificationOccurred(.success)
             }) {
                 Text(String(character))
-                    .font(.myFonts("UDDigiKyokashoN-B", size: 20))
-                    .fontWeight(.bold)
+                    .font(Font.custom("UDDigiKyokashoN-B", size: 30))
                     .padding(20)
                     .background(Color.white)
                     .foregroundColor(.black)
@@ -342,7 +339,6 @@ struct GameScreenView5: View {
         
         //Check word if correct add score plus reset game
         func checkWord() {
-                print(wordList)
                 //if correct
                if wordList.contains(currentWord) {
                     showAlert(title: "Congratulations!", message: "You spelled the word correctly!")

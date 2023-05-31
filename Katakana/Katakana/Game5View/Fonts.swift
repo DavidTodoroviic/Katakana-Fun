@@ -8,8 +8,10 @@
 import Foundation
 import SwiftUI
 
-extension Font {
-    static func myFonts(_ name: String, size: CGFloat) -> Font {
-        return Font.custom(name, size: size)
-    }
+//japaneseScriptFont: String = "UDDigiKyokashoN-B"
+//var englishFont: String = "Comic Sans MS"
+
+struct FontsManager {
+        static let EngFont = "Comic Sans MS"
+        static let KatFont = "UDDigiKyokashoN-B"
 }
