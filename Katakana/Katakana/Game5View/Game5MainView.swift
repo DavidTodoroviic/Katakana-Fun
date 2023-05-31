@@ -48,11 +48,11 @@ struct Game5MainView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                              
+            .toolbar {
+                    ToolbarItem(placement: .principal) {
                             }
                         }
+            .navigationBarBackButtonHidden(true)
                     }
                 }
             
