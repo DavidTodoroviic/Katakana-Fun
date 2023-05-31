@@ -302,7 +302,7 @@ struct GameScreenView5: View {
             timeRemaining = 120 // Reset the timer to 2 minutes
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if timeRemaining > 0 {
-                    timeRemaining -= 60
+                    timeRemaining -= 1
                 } else {
                     timer.invalidate()
                 }
