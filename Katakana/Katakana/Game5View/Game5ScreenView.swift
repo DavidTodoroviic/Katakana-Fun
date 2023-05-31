@@ -185,18 +185,17 @@ struct GameScreenView5: View {
                             Button(action: GlobalFunctions.getHint) {
                                 Text("?")
                                     .font(Font.custom(FontsManager.EngFont, size: 30))
-                                    .padding()
+                                    .padding(20)
                                     .background(Color.white)
                                     .foregroundColor(.black)
-                                    .cornerRadius(8)
+                                    .cornerRadius(40)
                             }
                         }
                         
                         //Katakana Buttons
                         VStack(spacing: 20) {
                             Text(currentWord)
-                                .font(.title2)
-                                .fontWeight(.bold)
+                                .font(Font.custom("UDDigiKyokashoN-B", size: 30))
                                 .padding(20)
                                 .background(Color.white)
                                 .foregroundColor(.black)
