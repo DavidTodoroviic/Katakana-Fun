@@ -112,29 +112,42 @@ struct GameScreenView5: View {
     
     @State private var currentWord = ""
     @State private var selectedCharacters: [Character] = []
-    @State private var score = 0
-    @State private var timeRemaining = 120
+    @State private var score5 = 0
+    @State private var timeRemaining = 150
     @State private var timer: Timer?
     
     var body: some View {
         //Ready page
-        if timeRemaining == 120 {
-            VStack {
-                Image("Start Button")
+        if timeRemaining == 150 {
+            ZStack{
+                Image("Sky and trees background")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-                    .onTapGesture {
-                        //random english word
-                        randomWord = englishWords.randomElement() ?? ""
-                        //get katakana that matches the word
-                        GlobalFunctions1.getKat()
-                        //shuffle the katakana
-                        providedCharacters.shuffle()
-                        //start timer
-                        Started()
-                           }
-                   }
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Text("Press start when ready!")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(20)
+                        .background(Color.white)
+                        .foregroundColor(.black)
+                        .cornerRadius(40)
+                    Image("Start Button")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150, height: 150)
+                        .onTapGesture {
+                            //random english word
+                            randomWord = englishWords.randomElement() ?? ""
+                            //get katakana that matches the word
+                            GlobalFunctions1.getKat()
+                            //shuffle the katakana
+                            providedCharacters.shuffle()
+                            //start timer
+                            Started()
+                        }
+                }
+            }
         }
         //Time's up screen
         if timeRemaining == 0 {
@@ -143,7 +156,27 @@ struct GameScreenView5: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
-                VStack{
+                VStack(spacing: 5){
+                    //score
+                    HStack{
+                        Text("Your score: \(score5)")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(20)
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .cornerRadius(40)
+                        
+                        //Menu button
+                        Image("Back Button")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200, height: 200)
+                            .onTapGesture {
+                            timeRemaining = 150
+                                   }
+                        
+                    }
                     // Time's UP! image
                     GeometryReader { geometry in
                         Image("Times up")
@@ -152,24 +185,12 @@ struct GameScreenView5: View {
                             .frame(width: min(geometry.size.width, geometry.size.height) * 0.8, height: min(geometry.size.width, geometry.size.height) * 0.8)
                             .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.25)
                     }
-                    HStack{
-                        Text("Your score: \(score)")
-                    }
-                    //Back button
-                    NavigationLink(destination: ContentView()) {
-                        VStack {
-                            Image("Menu Button")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150, height: 150)
-                        }
-                    }
                 }
-             }.navigationBarBackButtonHidden(true)
+             }
             }
         
             //Game Start screen
-            if timeRemaining < 120 && timeRemaining != 0{
+            if timeRemaining < 149 && timeRemaining != 0{
                 ZStack {
                 //background
                 Image("Game 5")
@@ -188,15 +209,17 @@ struct GameScreenView5: View {
                                 .foregroundColor(.black)
                                 .cornerRadius(40)
                             //score
-                            Text("Score: \(score)")
+                            Text("Score: \(score5)")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .padding(20)
                                 .background(Color.white)
                                 .foregroundColor(.black)
                                 .cornerRadius(40)
-                
+                   
                         }
+                        Spacer()
+                            .frame(height: 50)
                         HStack{
                             //english word
                             Text(randomWord)
@@ -215,6 +238,9 @@ struct GameScreenView5: View {
                                     .cornerRadius(40)
                             }
                         }
+                        Spacer()
+                            .frame(height: 30)
+
                         
                         //Katakana Buttons
                         VStack(spacing: 20) {
@@ -225,6 +251,9 @@ struct GameScreenView5: View {
                                 .foregroundColor(.black)
                                 .cornerRadius(40)
                             
+                            Spacer()
+                                .frame(height: 30)
+
                             VStack(spacing: 22) {
                                 HStack(spacing: 22) {
                                     ForEach(0..<2) { index in
@@ -242,7 +271,9 @@ struct GameScreenView5: View {
                                     }
                                 }
                             }
-                            
+                            Spacer()
+                                .frame(height: 40)
+
                             HStack{
                                 // Skip button
                                 Button(action: skipGame) {
@@ -278,7 +309,8 @@ struct GameScreenView5: View {
                            
                         }
                     }
-                }.navigationBarBackButtonHidden(true)
+                }.navigationBarHidden(true)
+                 .navigationBarBackButtonHidden(true)
             }
             
         }
@@ -286,10 +318,10 @@ struct GameScreenView5: View {
     
         //Score increase
         func increaseScore() {
-            if score < 10 {
-                score += 1
+            if score5 < 10 {
+                score5 += 1
             } else {
-                score += 5
+                score5 += 5
             }
         }
         
@@ -299,10 +331,10 @@ struct GameScreenView5: View {
         }
         //Start timer
         func startTimer() {
-            timeRemaining = 120 // Reset the timer to 2 minutes
+            timeRemaining = 150 // Reset the timer to 2 minutes
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if timeRemaining > 0 {
-                    timeRemaining -= 60
+                    timeRemaining -= 1
                 } else {
                     timer.invalidate()
                 }
@@ -367,7 +399,7 @@ struct GameScreenView5: View {
                     showAlert(title: "Congratulations!", message: "You spelled the word correctly!")
                     //add score
                     playCorrectSound()
-                    score += 1
+                    score5 += 1
                     //change english word
                     randomWord = englishWords.randomElement() ?? ""
                     //get katakana that matches the word

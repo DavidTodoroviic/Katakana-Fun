@@ -25,7 +25,7 @@ struct Game5MainView: View {
                         // Start button
                         NavigationLink(destination: GameScreenView5()) {
                             VStack {
-                                Image("Start Button")
+                                Image("Next Button")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 150, height: 150)
@@ -47,12 +47,8 @@ struct Game5MainView: View {
                         .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.25)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                    ToolbarItem(placement: .principal) {
-                            }
-                        }
-            .navigationBarBackButtonHidden(true)
-                    }
-                }
+        }
+    }
+
+                
             
