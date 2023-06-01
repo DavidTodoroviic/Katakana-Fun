@@ -113,12 +113,12 @@ struct GameScreenView5: View {
     @State private var currentWord = ""
     @State private var selectedCharacters: [Character] = []
     @State private var score5 = 0
-    @State private var timeRemaining = 120
+    @State private var timeRemaining = 150
     @State private var timer: Timer?
     
     var body: some View {
         //Ready page
-        if timeRemaining == 120 {
+        if timeRemaining == 150 {
             ZStack{
                 Image("Sky and trees background")
                     .resizable()
@@ -173,7 +173,7 @@ struct GameScreenView5: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 200, height: 200)
                             .onTapGesture {
-                            timeRemaining = 120
+                            timeRemaining = 150
                                    }
                         
                     }
@@ -190,7 +190,7 @@ struct GameScreenView5: View {
             }
         
             //Game Start screen
-            if timeRemaining < 119 && timeRemaining != 0{
+            if timeRemaining < 149 && timeRemaining != 0{
                 ZStack {
                 //background
                 Image("Game 5")
@@ -331,10 +331,10 @@ struct GameScreenView5: View {
         }
         //Start timer
         func startTimer() {
-            timeRemaining = 120 // Reset the timer to 2 minutes
+            timeRemaining = 150 // Reset the timer to 2 minutes
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if timeRemaining > 0 {
-                    timeRemaining -= 60
+                    timeRemaining -= 1
                 } else {
                     timer.invalidate()
                 }

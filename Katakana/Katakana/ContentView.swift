@@ -20,12 +20,11 @@ struct ContentView: View {
             NavigationView {
                 ZStack {
                     // Add the background image
-                    Image("Faded BG")
+                    Image("Main_menu__logo")
                         .resizable()
                         .scaledToFill()
                         .scaleEffect(1.1)
                         .edgesIgnoringSafeArea(.all)
-                    
                     VStack(spacing: 20) {
                         NavigationLink(destination: MenuView()) {
                             Image("Flashcards Button")
@@ -51,11 +50,9 @@ struct ContentView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Katakana Fun", displayMode: .large) // Set the navigation bar title
-                .navigationBarTitleDisplayMode(.inline)
                 .navigationBarHidden(true)
-                .navigationBarBackButtonHidden(true)
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 
