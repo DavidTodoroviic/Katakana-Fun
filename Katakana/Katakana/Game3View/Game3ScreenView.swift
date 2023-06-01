@@ -22,6 +22,7 @@ struct Game3ScreenView: View {
     @State private var num_balloons = 3
     @State private var chosen_group_eng: [String] = []
     @State private var chosen_group_kata: [String] = []
+    @State private var pressed_count = 0
     
     
     @State private var english = ["a", "e", "i", "o", "u"]
@@ -40,12 +41,9 @@ struct Game3ScreenView: View {
                         // chosen group
                         chosen_group_eng = english
                         chosen_group_kata = kata
-//                        rand_indices = get_random_indices()
-//                        kata_indices = rand_indices
-//                        kata_indices.shuffle()
+                        // randomise lists
                         randomise()
                         // (returns list of indices of random words chosen)
-                        
                         
                         //start timer
                         startTimer()
@@ -54,12 +52,14 @@ struct Game3ScreenView: View {
         }
         if time_remaining == 0
         {
-            Image("GAME 3 END")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
-            // show score to user
-            // have restart button that resets the timer to 120
+            ZStack {
+                Image("GAME 3 END")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                // show score to user
+                // have restart button that resets the timer to 120
+            }
         }
         if time_remaining < 120 && time_remaining != 0
         {
@@ -77,7 +77,7 @@ struct Game3ScreenView: View {
                     HStack{
                         //timer
                         Text(timeString(from: time_remaining))
-                            .font(.custom("Comic Sans MS", size: 30))
+                            .font(.title2)
                             .fontWeight(.bold)
                             .padding(20)
                             .background(Color.white)
@@ -85,7 +85,7 @@ struct Game3ScreenView: View {
                             .cornerRadius(40)
                         //score
                         Text("Score: \(score)")
-                            .font(.custom("Comic Sans MS", size: 30))
+                            .font(.title2)
                             .fontWeight(.bold)
                             .padding(20)
                             .background(Color.white)
@@ -93,10 +93,14 @@ struct Game3ScreenView: View {
                             .cornerRadius(40)
             
                     }
-                    var pressed_count = 0
+                    Spacer()
+                        .frame(height: 110)
+                    //var pressed_count = 0
                     let balloon_size: CGFloat = 120
-                    Text(pressed_count % 2 == 0 && pressed_count > 0 ? "checking win" : "doing nothing")
-                        .font(.custom("Comic Sans MS", size: 40))
+                    
+//                    Text(pressed_count % 2 == 0 && pressed_count > 0 ? "checking" : "doing nothing")
+//                        .font(.custom("Comic Sans MS", size: 40))
+                    
                     // row 1
                     HStack (spacing: 50){
                         
@@ -164,9 +168,10 @@ struct Game3ScreenView: View {
                                 
                             }
                     }
+                    
                 }
-        }
-        
+                
+            }
         }
     }
     
@@ -209,10 +214,6 @@ struct Game3ScreenView: View {
             }
         }
         return indices
-    }
-    
-    func Started(){
-        startTimer()
     }
     
     //Start timer
