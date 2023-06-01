@@ -112,7 +112,7 @@ struct GameScreenView5: View {
     
     @State private var currentWord = ""
     @State private var selectedCharacters: [Character] = []
-    @State private var score = 0
+    @State private var score5 = 0
     @State private var timeRemaining = 120
     @State private var timer: Timer?
     
@@ -125,6 +125,13 @@ struct GameScreenView5: View {
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
+                    Text("Press start when ready!")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(20)
+                        .background(Color.white)
+                        .foregroundColor(.black)
+                        .cornerRadius(40)
                     Image("Start Button")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -149,10 +156,10 @@ struct GameScreenView5: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
-                VStack(spacing: 10){
+                VStack(spacing: 5){
                     //score
                     HStack{
-                        Text("Your score: \(score)")
+                        Text("Your score: \(score5)")
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(20)
@@ -201,15 +208,17 @@ struct GameScreenView5: View {
                                 .foregroundColor(.black)
                                 .cornerRadius(40)
                             //score
-                            Text("Score: \(score)")
+                            Text("Score: \(score5)")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .padding(20)
                                 .background(Color.white)
                                 .foregroundColor(.black)
                                 .cornerRadius(40)
-                
+                   
                         }
+                        Spacer()
+                            .frame(height: 50)
                         HStack{
                             //english word
                             Text(randomWord)
@@ -228,6 +237,9 @@ struct GameScreenView5: View {
                                     .cornerRadius(40)
                             }
                         }
+                        Spacer()
+                            .frame(height: 30)
+
                         
                         //Katakana Buttons
                         VStack(spacing: 20) {
@@ -238,6 +250,9 @@ struct GameScreenView5: View {
                                 .foregroundColor(.black)
                                 .cornerRadius(40)
                             
+                            Spacer()
+                                .frame(height: 30)
+
                             VStack(spacing: 22) {
                                 HStack(spacing: 22) {
                                     ForEach(0..<2) { index in
@@ -255,7 +270,9 @@ struct GameScreenView5: View {
                                     }
                                 }
                             }
-                            
+                            Spacer()
+                                .frame(height: 40)
+
                             HStack{
                                 // Skip button
                                 Button(action: skipGame) {
@@ -300,10 +317,10 @@ struct GameScreenView5: View {
     
         //Score increase
         func increaseScore() {
-            if score < 10 {
-                score += 1
+            if score5 < 10 {
+                score5 += 1
             } else {
-                score += 5
+                score5 += 5
             }
         }
         
@@ -316,7 +333,7 @@ struct GameScreenView5: View {
             timeRemaining = 120 // Reset the timer to 2 minutes
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if timeRemaining > 0 {
-                    timeRemaining -= 60
+                    timeRemaining -= 2
                 } else {
                     timer.invalidate()
                 }
@@ -381,7 +398,7 @@ struct GameScreenView5: View {
                     showAlert(title: "Congratulations!", message: "You spelled the word correctly!")
                     //add score
                     playCorrectSound()
-                    score += 1
+                    score5 += 1
                     //change english word
                     randomWord = englishWords.randomElement() ?? ""
                     //get katakana that matches the word
