@@ -16,7 +16,6 @@ struct Game3InfoView: View {
     let rows: Int = 4
     let cols: Int = 2
     var chars_selection = ["a-o", "ha-ho", "ka-ko", "ma-n", "na-no", "sa-so", "ta-to", "tenten & maru", "Combination Characters"]
-    //@State private var char_selection = "."
     
     var body: some View {
         ZStack {

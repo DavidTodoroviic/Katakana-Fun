@@ -28,9 +28,26 @@ struct Game3ScreenView: View {
     @State private var scale: [CGFloat] = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
     @State private var balloon_size: CGFloat = 120
     @State private var loons_won: [Int] = [0, 0, 0, 0, 0, 0] // if 1, loon has won and don't display it
+    @State private var loon_indices: [Int] = [] // for tracking last two loons tapped
     
-    @State private var english = ["a", "e", "i", "o", "u"]
-    @State private var kata = ["a-k", "e-k", "i-k", "o-k", "u-k"]
+    @State private var a_english = ["a", "e", "i", "o", "u"]
+    @State private var a_kata = ["a-k", "e-k", "i-k", "o-k", "u-k"]
+    @State private var h_english = ["fu", "ha", "he", "hi", "ho"]
+    @State private var h_kata = ["fu-k", "ha-k", "he-k", "hi-k", "ho-k"]
+    @State private var k_english = ["ka", "ke", "ki", "ko", "ku"]
+    @State private var k_kata = ["ka-k", "ke-k", "ki-k", "ko-k", "ku"]
+    @State private var m_english = ["ma", "me", "mi", "mo", "mu", "n", "ra", "re", "ri", "ro", "ru", "wa", "ya", "yo", "yu"]
+    @State private var m_kata = ["ma-k", "me-k", "mi-k", "mo-k", "mu-k", "n-k", "ra-k", "re-k", "ri-k", "ro-k", "ru-k", "wa-k", "ya-k", "yo-k", "yu"]
+    @State private var n_english = ["na", "ne", "ni", "no", "nu"]
+    @State private var n_kata = ["na-k", "ne-k", "ni-k", "no-k", "nu-k"]
+    @State private var s_english = ["sa", "se", "shi", "so", "su"]
+    @State private var s_kata = ["sa-k", "se-k", "shi-k", "so-k", "su-k"]
+    @State private var t_english = ["chi", "ta", "te", "to", "tsu"]
+    @State private var t_kata = ["chi-k", "ta-k", "te-k", "to-k", "tsu-k"]
+    @State private var tm_english = ["ba", "be", "bi", "bo", "bu", "da", "de", "do", "ga", "ge", "gi", "go", "gu", "ji", "pa", "pe", "pi", "po", "pu", "za", "ze", "zo", "zu"]
+    @State private var tm_kata = ["ba-k", "be-k", "bi-k", "bo-k", "bu-k", "da-k", "de-k", "do-k", "ga-k", "ge-k", "gi-k", "go-k", "gu-k", "ji-k", "pa-k", "pe-k", "pi-k", "po-k", "pu-k", "za-k", "ze-k", "zo-k", "zu-k"]
+    @State private var combo_eng = ["bya", "byo", "byu", "cha", "cho", "chu", "gya", "gyo", "gyu", "hya", "hyo", "hyu", "ja", "jo", "ju", "kya", "kyo", "kyu", "mya", "myo", "myu", "nya", "nyo", "nyu", "pya", "pyo", "pyu", "rya", "ryo", "ryu", "sha", "sho", "shu"]
+    @State private var combo_kata = ["bya-k", "byo-k", "byu-k", "cha-k", "cho-k", "chu-k", "gya-k", "gyo-k", "gyu-k", "hya-k", "hyo-k", "hyu-k", "ja-k", "jo-k", "ju-k", "kya-k", "kyo-k", "kyu-k", "mya-k", "myo-k", "myu-k", "nya-k", "nyo-k", "nyu-k", "pya-k", "pyo-k", "pyu-k", "rya-k", "ryo-k", "ryu-k", "sha-k", "sho-k", "shu-k"]
     
     var body: some View {
         // start screen
@@ -43,11 +60,42 @@ struct Game3ScreenView: View {
                     .frame(width: 200, height: 200)
                     .onTapGesture {
                         // chosen group
-                        chosen_group_eng = english
-                        chosen_group_kata = kata
+                        switch char_selection {
+                        case "a-o":
+                            chosen_group_eng = a_english
+                            chosen_group_kata = a_kata
+                        case "ha-ho":
+                            chosen_group_eng = h_english
+                            chosen_group_kata = h_kata
+                        case "ka-ko":
+                            chosen_group_eng = k_english
+                            chosen_group_kata = k_kata
+                        case "ma-n":
+                            chosen_group_eng = m_english
+                            chosen_group_kata = m_kata
+                        case "na-no":
+                            chosen_group_eng = n_english
+                            chosen_group_kata = n_kata
+                        case "sa-so":
+                            chosen_group_eng = s_english
+                            chosen_group_kata = s_kata
+                        case "ta-to":
+                            chosen_group_eng = t_english
+                            chosen_group_kata = t_kata
+                        case "tenten & maru":
+                            chosen_group_eng = tm_english
+                            chosen_group_kata = tm_kata
+                        case "Combination Characters":
+                            chosen_group_eng = combo_eng
+                            chosen_group_kata = combo_kata
+                        default:
+                            chosen_group_eng = k_english
+                            chosen_group_kata = k_kata
+                        }
                         // randomise lists
                         randomise()
-                        
+                        // init score
+                        score = 0
                         //start timer
                         startTimer()
                     }
@@ -106,213 +154,97 @@ struct Game3ScreenView: View {
                     } // close brace for HStack
                     Spacer()
                         .frame(height: 110)
-                    Text("\(pressed_count)")
-                        .font(.title)
-                    if (guesses.count == 1){
-                        Text("\(guesses[0])")
-                            .font(.title)
-                    }
-                    if (guesses.count == 2){
-                        Text("\(guesses[0]), \(guesses[1])")
-                            .font(.title)
-                    }
-                    if (guesses.count == 3){
-                        Text("\(guesses[0]), \(guesses[1]), \(guesses[2])")
-                            .font(.title)
-                    }
 
-                    
-                    
                     // 3 rows of 2 balloons
-                    ForEach(0...2, id: \.self) { i in
-                        HStack (spacing: 50){
+                    ForEach(0..<3) { i in
+                        HStack (spacing: 0){
                             if loons_won[i] == 0 {
-                                Image(english[rand_indices[i]])
+                                Image(chosen_group_eng[rand_indices[i]])
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .scaleEffect(scale[i])
                                     .frame(width: balloon_size, height: balloon_size)
+                                    .position(x: balloon_size * 1.6, y: balloon_size - 100)
                                     .onTapGesture {
                                         pressed_count += 1
-                                        if guesses.contains(english[rand_indices[i]]){
-                                            guesses.removeAll{ $0 == english[rand_indices[i]]}
+                                        if guesses.contains(chosen_group_eng[rand_indices[i]]){
+                                            guesses.removeAll{ $0 == chosen_group_eng[rand_indices[i]]}
                                             pressed_count -= 2
                                         } else {
-                                            guesses.append(english[rand_indices[i]])
+                                            guesses.append(chosen_group_eng[rand_indices[i]])
                                         }
-                                        
+                                        if loon_indices.contains(i)
+                                        {
+                                            loon_indices.removeAll { $0 == i }
+                                        } else {
+                                            loon_indices.append(i)
+                                        }
                                         withAnimation {
                                             scale[i] = scale[i] == 1.0 ? 0.7 : 1.0
                                         }
-//                                        check_local_win(row_index: 0, scale_index: 0)
-                                        
+                                        check_local_win()
+                                        check_global_win()
                                     }
+                                
                             } // close brace for if
-                            if loons_won[i+3] == 0 {
-                                Image(kata[kata_indices[i]])
+                            
+                            if loons_won[i+3] == 0 && loons_won[i] == 0 {
+                                    Image(chosen_group_kata[kata_indices[i]])
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .scaleEffect(scale[i+3])
+                                        .frame(width: balloon_size, height: balloon_size)
+                                        .position(x: balloon_size * 0.6, y: balloon_size - 100)
+                                        //.position(x: geometry.size.width * 0.35, y: geometry.size.height - 100)
+                                        .onTapGesture {
+                                            pressed_count += 1
+                                            if guesses.contains(chosen_group_kata[kata_indices[i]]){
+                                                guesses.removeAll{ $0 == chosen_group_kata[kata_indices[i]]}
+                                                pressed_count -= 2
+                                            } else {
+                                                guesses.append(chosen_group_kata[kata_indices[i]])
+                                            }
+                                            if loon_indices.contains(i+3)
+                                            {
+                                                loon_indices.removeAll { $0 == i+3 }
+                                            } else {
+                                                loon_indices.append(i+3)
+                                            }
+                                            withAnimation {
+                                                scale[i+3] = scale[i+3] == 1.0 ? 0.7 : 1.0
+                                            }
+                                            check_local_win()
+                                            check_global_win()
+                                        }
+                            } // close brace for if
+                            
+                            else if loons_won[i+3] == 0 {
+                                Image(chosen_group_kata[kata_indices[i]])
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .scaleEffect(scale[i+3])
                                     .frame(width: balloon_size, height: balloon_size)
+                                    .position(x: balloon_size * 2.81, y: balloon_size - 100)
                                     .onTapGesture {
                                         pressed_count += 1
-                                        if guesses.contains(kata[kata_indices[i]]){
-                                            guesses.removeAll{ $0 == kata[kata_indices[i]]}
+                                        if guesses.contains(chosen_group_kata[kata_indices[i]]){
+                                            guesses.removeAll{ $0 == chosen_group_kata[kata_indices[i]]}
                                             pressed_count -= 2
                                         } else {
-                                            guesses.append(kata[kata_indices[i]])
+                                            guesses.append(chosen_group_kata[kata_indices[i]])
+                                            loon_indices.append(i+3)
                                         }
                                         
                                         withAnimation {
                                             scale[i+3] = scale[i+3] == 1.0 ? 0.7 : 1.0
                                         }
-//                                        check_local_win(row_index: 0, scale_index: 1)
-                                        
+                                        check_local_win()
+                                        check_global_win()
                                     }
-                            } // close brace for if
+                            } // close brace for else if
                         } // close brace for HStack
                     } // close brace for loop
-//                        HStack (spacing: 50){
-//                            if loons_won[0] == 0 {
-//                                Image(english[rand_indices[0]])
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .scaleEffect(scale[0])
-//                                    .frame(width: balloon_size, height: balloon_size)
-//                                    .onTapGesture {
-//                                        pressed_count += 1
-//                                        if guesses.contains(english[rand_indices[0]]){
-//                                            guesses.removeAll{ $0 == english[rand_indices[0]]}
-//                                            pressed_count -= 2
-//                                        } else {
-//                                            guesses.append(english[rand_indices[0]])
-//                                        }
-//
-//                                        withAnimation {
-//                                            scale[0] = scale[0] == 1.0 ? 0.7 : 1.0
-//                                        }
-//                                        check_local_win(row_index: 0, scale_index: 0)
-//
-//                                    }
-//                            } // close brace for if
-//                            if loons_won[1] == 0 {
-//                                Image(kata[kata_indices[0]])
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .scaleEffect(scale[1])
-//                                    .frame(width: balloon_size, height: balloon_size)
-//                                    .onTapGesture {
-//                                        pressed_count += 1
-//                                        if guesses.contains(kata[kata_indices[0]]){
-//                                            guesses.removeAll{ $0 == kata[kata_indices[0]]}
-//                                            pressed_count -= 2
-//                                        } else {
-//                                            guesses.append(kata[kata_indices[0]])
-//                                        }
-//
-//                                        withAnimation {
-//                                            scale[1] = scale[1] == 1.0 ? 0.7 : 1.0
-//                                        }
-//                                        check_local_win(row_index: 0, scale_index: 1)
-//
-//                                    }
-//                            } // close brace for if
-//                        } // close brace for HStack 1
-//                    // row 2
-//                        HStack (spacing: 50){
-//                            if loons_won[2] == 0 {
-//                                Image(english[rand_indices[1]])
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .scaleEffect(scale[2])
-//                                    .frame(width: balloon_size, height: balloon_size)
-//                                    .onTapGesture {
-//                                        pressed_count += 1
-//                                        if guesses.contains(english[rand_indices[1]]){
-//                                            guesses.removeAll{ $0 == english[rand_indices[1]]}
-//                                            pressed_count -= 2
-//                                        } else {
-//                                            guesses.append(english[rand_indices[1]])
-//                                        }
-//
-//                                        withAnimation {
-//                                            scale[2] = scale[2] == 1.0 ? 0.7 : 1.0
-//                                        }
-//                                        check_local_win(row_index: 1, scale_index: 2)
-//
-//                                    }
-//                            } // close brace for if
-//                            if loons_won[3] == 0 {
-//                                Image(kata[kata_indices[1]])
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .scaleEffect(scale[3])
-//                                    .frame(width: balloon_size, height: balloon_size)
-//                                    .onTapGesture {
-//                                        pressed_count += 1
-//                                        if guesses.contains(kata[kata_indices[1]]){
-//                                            guesses.removeAll{ $0 == kata[kata_indices[1]]}
-//                                            pressed_count -= 2
-//                                        } else {
-//                                            guesses.append(kata[kata_indices[1]])
-//                                        }
-//
-//                                        withAnimation {
-//                                            scale[3] = scale[3] == 1.0 ? 0.7 : 1.0
-//                                        }
-//                                        check_local_win(row_index: 1, scale_index: 3)
-//
-//                                    }
-//                            } // close brace for if
-//                        } // close brace for HStack 2
-//
-//                    // row 3
-//                        HStack (spacing: 50){
-//                            if loons_won[4] == 0 {
-//                                Image(english[rand_indices[2]])
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .scaleEffect(scale[4])
-//                                    .frame(width: balloon_size, height: balloon_size)
-//                                    .onTapGesture {
-//                                        pressed_count += 1
-//                                        if guesses.contains(english[rand_indices[2]]){
-//                                            guesses.removeAll{ $0 == english[rand_indices[2]]}
-//                                            pressed_count -= 2
-//                                        } else {
-//                                            guesses.append(english[rand_indices[2]])
-//                                        }
-//
-//                                        withAnimation {
-//                                            scale[4] = scale[4] == 1.0 ? 0.7 : 1.0
-//                                        }
-//                                        check_local_win(row_index: 2, scale_index: 4)
-//
-//                                    }
-//                            } // close brace for if
-//                            if loons_won[5] == 0 {
-//                                Image(kata[kata_indices[2]])
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .scaleEffect(scale[5])
-//                                    .frame(width: balloon_size, height: balloon_size)
-//                                    .onTapGesture {
-//                                        pressed_count += 1
-//                                        if guesses.contains(kata[kata_indices[2]]){
-//                                            guesses.removeAll{ $0 == kata[kata_indices[2]]}
-//                                            pressed_count -= 2
-//                                        } else {
-//                                            guesses.append(kata[kata_indices[2]])
-//                                        }
-//
-//                                        withAnimation {
-//                                            scale[5] = scale[5] == 1.0 ? 0.7 : 1.0
-//                                        }
-//                                        check_local_win(row_index: 2, scale_index: 5)
-//                                    }
-//                            } // close brace for if
-//                        } // close brace for HStack 3
-                
+    
                 } // close brace for VStack
                 .padding(.bottom, 80)
                 
@@ -320,7 +252,25 @@ struct Game3ScreenView: View {
         }
     }
     
-    func check_local_win(row_index: Int, scale_index: Int)
+    func check_global_win()
+    {
+        if loons_won.allSatisfy({ $0 == 1 }) {
+            // add one to score
+            score += 1
+            // randomise
+            randomise()
+            // respawn loons
+            for i in 0..<6 {
+                loons_won[i] = 0
+            }
+            // reset scale array
+            for i in 0..<6 {
+                scale[i] = 1.0
+            }
+        }
+    }
+    
+    func check_local_win()
     {
         // index is passed so loons_won can be updated
         if !scale.allSatisfy ({ $0 == 1.0 })
@@ -329,23 +279,28 @@ struct Game3ScreenView: View {
             {
                 // check if two most recent items in guesses array are valid matches:
                 
-                var char1 = guesses[0]
-                var char2 = guesses[1]
+                let char1 = guesses[0]
+                let char2 = guesses[1]
                 let index1 = chosen_group_eng.firstIndex(of: char1)!
                 let index2 = chosen_group_kata.firstIndex(of: char2)!
-                
+                let l_index1 = loon_indices[0]
+                let l_index2 = loon_indices[1]
                 if index1 == index2 {
                     // correct
                     playCorrectSound()
-                    loons_won[row_index] = 1
+                    loons_won[l_index1] = 1
+                    loons_won[l_index2] = 1 // remove loons from screen
                     pressed_count = 0
                     guesses.removeAll()
+                    loon_indices.removeAll()
                 } else {
                     // wrong
                     playErrorSound()
                     pressed_count = 0
-                    scale[scale_index] = 1.0
+                    scale[l_index1] = 1.0
+                    scale[l_index2] = 1.0
                     guesses.removeAll()
+                    loon_indices.removeAll()
                 }
                 
             }
