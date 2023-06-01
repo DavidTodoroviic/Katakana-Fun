@@ -16,41 +16,46 @@ struct ContentView: View {
     let buttonImages: [String] = ["Game 1 Button", "Game 2 Button", "Game 3 Button", "Game 4 Button", "Game 5 Button"]
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                // Add the background image
-                Image("Faded BG")
-                    .resizable()
-                    .scaledToFill()
-                    .scaleEffect(1.1)
-                    .edgesIgnoringSafeArea(.all)
-                
-                VStack(spacing: 20) {
-                    NavigationLink(destination: MenuView()) {
-                        Image("Flashcards Button")
-                            .resizable()
-                            .frame(width: 180, height: 40)
-                            .cornerRadius(10)
-                    }
+        
+            NavigationView {
+                ZStack {
+                    // Add the background image
+                    Image("Faded BG")
+                        .resizable()
+                        .scaledToFill()
+                        .scaleEffect(1.1)
+                        .edgesIgnoringSafeArea(.all)
                     
-                    ForEach(gameViews.indices, id: \.self) { index in
-                        NavigationLink(destination: gameViews[index].1.environment(\.managedObjectContext, viewContext)) {
-                            Image(buttonImages[index % buttonImages.count])
+                    VStack(spacing: 20) {
+                        NavigationLink(destination: MenuView()) {
+                            Image("Flashcards Button")
                                 .resizable()
                                 .frame(width: 180, height: 40)
                                 .cornerRadius(10)
                         }
-                    }
-                    
-                    NavigationLink(destination: InfoView().environment(\.managedObjectContext, viewContext)) {
-                        Image("Info Button")
-                            .resizable()
-                            .frame(width: 100, height: 40)
-                            .cornerRadius(10)
+                        
+                        ForEach(gameViews.indices, id: \.self) { index in
+                            NavigationLink(destination: gameViews[index].1.environment(\.managedObjectContext, viewContext)) {
+                                Image(buttonImages[index % buttonImages.count])
+                                    .resizable()
+                                    .frame(width: 180, height: 40)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        
+                        NavigationLink(destination: InfoView().environment(\.managedObjectContext, viewContext)) {
+                            Image("Info Button")
+                                .resizable()
+                                .frame(width: 100, height: 40)
+                                .cornerRadius(10)
+                        }
                     }
                 }
+                .navigationBarTitle("Katakana Fun", displayMode: .large) // Set the navigation bar title
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
             }
-            .navigationBarTitle("Katakana Fun", displayMode: .large) // Set the navigation bar title
         }
     }
-}
+

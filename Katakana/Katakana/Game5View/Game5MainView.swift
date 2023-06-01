@@ -47,12 +47,8 @@ struct Game5MainView: View {
                         .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.25)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                    ToolbarItem(placement: .principal) {
-                            }
-                        }
-            .navigationBarBackButtonHidden(true)
-                    }
-                }
+        }
+    }
+
+                
             

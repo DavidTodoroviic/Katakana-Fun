@@ -155,21 +155,20 @@ struct GameScreenView5: View {
                     HStack{
                         Text("Your score: \(score)")
                     }
-                    //Back button
-                    NavigationLink(destination: ContentView()) {
-                        VStack {
-                            Image("Menu Button")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150, height: 150)
-                        }
-                    }
+                    //Menu button
+                    Image("Back Button")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200, height: 200)
+                        .onTapGesture {
+                        timeRemaining = 120
+                               }
                 }
-             }.navigationBarBackButtonHidden(true)
+             }
             }
         
             //Game Start screen
-            if timeRemaining < 120 && timeRemaining != 0{
+            if timeRemaining < 119 && timeRemaining != 0{
                 ZStack {
                 //background
                 Image("Game 5")
@@ -278,7 +277,8 @@ struct GameScreenView5: View {
                            
                         }
                     }
-                }.navigationBarBackButtonHidden(true)
+                }.navigationBarHidden(true)
+                 .navigationBarBackButtonHidden(true)
             }
             
         }
