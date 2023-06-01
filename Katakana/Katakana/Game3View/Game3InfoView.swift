@@ -8,26 +8,14 @@
 import SwiftUI
 import CoreData
 
-//struct Game3ButtonStyle: ButtonStyle {
-//    func makeBody(configuration: Configuration) -> some View {
-//        configuration.label
-//            .font(.title)
-//            .foregroundColor(.white)
-//            .padding()
-//            .background(Color.green)
-//            .cornerRadius(10)
-//            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-//    }
-//}
-
 var char_selection = "."
 
 struct Game3InfoView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    let rows: Int = 3
+    let rows: Int = 4
     let cols: Int = 2
-    var chars_selection = ["a - o", "ka - ko", "sa - to", "na - ho", "ma - n", "tenten & maru", "Combination Characters"]
+    var chars_selection = ["a-o", "ha-ho", "ka-ko", "ma-n", "na-no", "sa-so", "ta-to", "tenten & maru", "Combination Characters"]
     //@State private var char_selection = "."
     
     var body: some View {
@@ -35,14 +23,14 @@ struct Game3InfoView: View {
             // background image
             Image("Katakana cards stars BG")
                 .resizable()
-                .scaleEffect(1.2)
+                .scaleEffect(1.1)
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 8){
+            VStack(spacing: 5){
                 RoundedRectangle(cornerRadius: 30)
                     .fill(.white)
-                    .frame(width: 320, height: 110)
+                    .frame(width: 320, height: 80)
                     .overlay(RoundedRectangle(cornerRadius: 30)
                         .stroke(.black, lineWidth: 5))
 
@@ -56,10 +44,10 @@ struct Game3InfoView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 150, height: 80)
                 }
-                
+                .padding(20)
                 RoundedRectangle(cornerRadius: 30)
                     .fill(.white)
-                    .frame(width: 320, height: 400)
+                    .frame(width: 320, height: 300)
                     .overlay(
                         VStack(spacing: 0) {
                             ForEach(0..<rows) { row in
@@ -70,11 +58,20 @@ struct Game3InfoView: View {
                                             char_selection = label
                                                 
                                         }) {
-                                            Text(chars_selection[(row * cols + column)])
-                                                .font(.system(size: 30, weight: .bold))
+                                            if (row * cols + column != 7)
+                                            {
+                                                Text(chars_selection[(row * cols + column)])
+                                                .font(.custom("Comic Sans MS", size: 30))
                                                 .foregroundColor(.black)
-                                                .frame(width: 160, height: 400/3)
+                                                .frame(width: 160, height: 300/4)
                                                 .cornerRadius(0)
+                                            } else {
+                                                Text(chars_selection[(row * cols + column)])
+                                                .font(.custom("Comic Sans MS", size: 26))
+                                                .foregroundColor(.black)
+                                                .frame(width: 160, height: 300/4)
+                                                .cornerRadius(0)
+                                            }
                                         }
                                     }
                                 }
@@ -82,7 +79,7 @@ struct Game3InfoView: View {
                         }
                     )
                 Spacer()
-                    .frame(height: 5)
+                    .frame(height: 2)
                 Capsule()
                     .fill(.white)
                     .frame(width: 320, height: 70)
@@ -93,33 +90,23 @@ struct Game3InfoView: View {
                                 char_selection = label
                             }) {
                                 Text(chars_selection[(rows * cols)])
-                                    .font(.system(size: 25, weight: .bold))
+                                    .font(.custom("Comic Sans MS", size: 27))
                                     .foregroundColor(.black)
                                     .frame(width: 320, height: 400/3)
                                     .cornerRadius(0)
                             }
                     )
-                
-                        
-                    //.padding(.bottom, 0)
             }
             
-            
-            VStack {
-                
-                //Spacer()
-                Text("Balloon Bash!")
-                    .font(.system(size: 40, weight: .bold))
+            VStack(spacing: 17) {
+                Text("Balloon Bash")
+                    .font(.custom("Comic Sans MS", size: 38))
                     .foregroundColor(.pink)
-                    //.position(x: 305, y: 60)
-                Spacer()
-                    .frame(height: 40)
                 Text("Select Characters")
-                    .font(.system(size: 35, weight: .bold))
+                    .font(.custom("Comic Sans MS", size: 35))
                     .foregroundColor(.pink)
-                    //.position(x: 305, y: 60)
                 
-                    .padding(.bottom, 555)
+                    .padding(.bottom, 500)
             }
         }
     }

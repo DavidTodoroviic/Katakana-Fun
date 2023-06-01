@@ -17,11 +17,9 @@ struct Game3MainView: View {
             Image("Game 3 BG")
                 .resizable()
                 .scaledToFill()
+                .scaleEffect(1.4)
                 .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                Spacer()
-                
+            VStack(spacing: 10) {
                 Image("Game 3 Info")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -31,8 +29,6 @@ struct Game3MainView: View {
                     //.frame(width: 400, height: 400)
                 
                 HStack {
-                    Spacer()
-                    
                     // Start button
                     NavigationLink(destination: Game3ScreenView()) {
                         VStack {
@@ -40,31 +36,21 @@ struct Game3MainView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 150, height: 150)
-                            
                         }
                     }
-                    Spacer()
+                    
                 }
                 .padding(.bottom, 20)
             }
-            .padding()
-            
+
             VStack {
-                
-                Text("Balloon Bash!")
-                    .font(.system(size: 40, weight: .bold))
+                Text("Balloon Bash")
+                    .font(.custom("Comic Sans MS", size: 50))
                     .foregroundColor(.pink)
-                
             }
-            .padding(.bottom, 620)
+            .padding(.bottom, 660)
         }
-    
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                
-            }
-        }
     }
 }
 
