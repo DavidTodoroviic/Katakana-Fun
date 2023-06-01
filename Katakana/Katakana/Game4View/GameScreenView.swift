@@ -193,12 +193,12 @@ struct GameScreenView: View {
         ]
         
         // Generate new options
-        katakana4Options = allKatakanaOptions.shuffled().prefix(10).map { $0 }
-        romajiOptions = allRomajiOptions.shuffled().prefix(10).map { $0 }
-        soundOptions = allSoundOptions.shuffled().prefix(10).map { $0 }
+        katakana4Options = allKatakanaOptions.shuffled().prefix(45).map { $0 }
+        romajiOptions = allRomajiOptions.shuffled().prefix(45).map { $0 }
+        soundOptions = allSoundOptions.shuffled().prefix(45).map { $0 }
         
         // Select correct options
-        let correctIndex = Int.random(in: 0..<10)
+        let correctIndex = Int.random(in: 0..<45)
         correctKatakana = katakana4Options[correctIndex]
         correctRomaji = romajiOptions[correctIndex]
         correctSound = soundOptions[correctIndex]

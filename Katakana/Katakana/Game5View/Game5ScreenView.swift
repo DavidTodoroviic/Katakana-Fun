@@ -165,7 +165,7 @@ struct GameScreenView5: View {
                         }
                     }
                 }
-             }
+             }.navigationBarBackButtonHidden(true)
             }
         
             //Game Start screen
@@ -302,7 +302,7 @@ struct GameScreenView5: View {
             timeRemaining = 120 // Reset the timer to 2 minutes
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if timeRemaining > 0 {
-                    timeRemaining -= 1
+                    timeRemaining -= 60
                 } else {
                     timer.invalidate()
                 }
