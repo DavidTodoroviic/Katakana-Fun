@@ -49,6 +49,9 @@ struct Game3ScreenView: View {
     @State private var combo_eng = ["bya", "byo", "byu", "cha", "cho", "chu", "gya", "gyo", "gyu", "hya", "hyo", "hyu", "ja", "jo", "ju", "kya", "kyo", "kyu", "mya", "myo", "myu", "nya", "nyo", "nyu", "pya", "pyo", "pyu", "rya", "ryo", "ryu", "sha", "sho", "shu"]
     @State private var combo_kata = ["bya-k", "byo-k", "byu-k", "cha-k", "cho-k", "chu-k", "gya-k", "gyo-k", "gyu-k", "hya-k", "hyo-k", "hyu-k", "ja-k", "jo-k", "ju-k", "kya-k", "kyo-k", "kyu-k", "mya-k", "myo-k", "myu-k", "nya-k", "nyo-k", "nyu-k", "pya-k", "pyo-k", "pyu-k", "rya-k", "ryo-k", "ryu-k", "sha-k", "sho-k", "shu-k"]
     
+    //vibration feedback
+    let generator = UINotificationFeedbackGenerator()
+    
     var body: some View {
         // start screen
         if time_remaining == 120
@@ -89,8 +92,8 @@ struct Game3ScreenView: View {
                             chosen_group_eng = combo_eng
                             chosen_group_kata = combo_kata
                         default:
-                            chosen_group_eng = k_english
-                            chosen_group_kata = k_kata
+                            chosen_group_eng = a_english
+                            chosen_group_kata = a_kata
                         }
                         // randomise lists
                         randomise()
@@ -166,6 +169,7 @@ struct Game3ScreenView: View {
                                     .frame(width: balloon_size, height: balloon_size)
                                     .position(x: balloon_size * 1.6, y: balloon_size - 100)
                                     .onTapGesture {
+                                        generator.notificationOccurred(.success)
                                         pressed_count += 1
                                         if guesses.contains(chosen_group_eng[rand_indices[i]]){
                                             guesses.removeAll{ $0 == chosen_group_eng[rand_indices[i]]}
@@ -197,6 +201,7 @@ struct Game3ScreenView: View {
                                         .position(x: balloon_size * 0.6, y: balloon_size - 100)
                                         //.position(x: geometry.size.width * 0.35, y: geometry.size.height - 100)
                                         .onTapGesture {
+                                            generator.notificationOccurred(.success)
                                             pressed_count += 1
                                             if guesses.contains(chosen_group_kata[kata_indices[i]]){
                                                 guesses.removeAll{ $0 == chosen_group_kata[kata_indices[i]]}
@@ -226,6 +231,7 @@ struct Game3ScreenView: View {
                                     .frame(width: balloon_size, height: balloon_size)
                                     .position(x: balloon_size * 2.81, y: balloon_size - 100)
                                     .onTapGesture {
+                                        generator.notificationOccurred(.success)
                                         pressed_count += 1
                                         if guesses.contains(chosen_group_kata[kata_indices[i]]){
                                             guesses.removeAll{ $0 == chosen_group_kata[kata_indices[i]]}
