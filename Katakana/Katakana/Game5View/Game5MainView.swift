@@ -25,7 +25,7 @@ struct Game5MainView: View {
                         // Start button
                         NavigationLink(destination: GameScreenView5()) {
                             VStack {
-                                Image("Start Button")
+                                Image("Next Button")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 150, height: 150)

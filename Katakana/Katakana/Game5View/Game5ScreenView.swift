@@ -119,22 +119,28 @@ struct GameScreenView5: View {
     var body: some View {
         //Ready page
         if timeRemaining == 120 {
-            VStack {
-                Image("Start Button")
+            ZStack{
+                Image("Sky and trees background")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-                    .onTapGesture {
-                        //random english word
-                        randomWord = englishWords.randomElement() ?? ""
-                        //get katakana that matches the word
-                        GlobalFunctions1.getKat()
-                        //shuffle the katakana
-                        providedCharacters.shuffle()
-                        //start timer
-                        Started()
-                           }
-                   }
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Image("Start Button")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150, height: 150)
+                        .onTapGesture {
+                            //random english word
+                            randomWord = englishWords.randomElement() ?? ""
+                            //get katakana that matches the word
+                            GlobalFunctions1.getKat()
+                            //shuffle the katakana
+                            providedCharacters.shuffle()
+                            //start timer
+                            Started()
+                        }
+                }
+            }
         }
         //Time's up screen
         if timeRemaining == 0 {
@@ -143,7 +149,17 @@ struct GameScreenView5: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
-                VStack{
+                VStack(spacing: 10){
+                    //score
+                    HStack{
+                        Text("Your score: \(score)")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(20)
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .cornerRadius(40)
+                    }
                     // Time's UP! image
                     GeometryReader { geometry in
                         Image("Times up")
@@ -152,14 +168,12 @@ struct GameScreenView5: View {
                             .frame(width: min(geometry.size.width, geometry.size.height) * 0.8, height: min(geometry.size.width, geometry.size.height) * 0.8)
                             .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.25)
                     }
-                    HStack{
-                        Text("Your score: \(score)")
-                    }
+                    
                     //Menu button
                     Image("Back Button")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 200, height: 200)
+                        .frame(width: 150, height: 150)
                         .onTapGesture {
                         timeRemaining = 120
                                }
