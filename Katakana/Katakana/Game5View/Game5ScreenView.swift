@@ -166,6 +166,16 @@ struct GameScreenView5: View {
                             .background(Color.white)
                             .foregroundColor(.black)
                             .cornerRadius(40)
+                        
+                        //Menu button
+                        Image("Back Button")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200, height: 200)
+                            .onTapGesture {
+                            timeRemaining = 120
+                                   }
+                        
                     }
                     // Time's UP! image
                     GeometryReader { geometry in
@@ -175,15 +185,6 @@ struct GameScreenView5: View {
                             .frame(width: min(geometry.size.width, geometry.size.height) * 0.8, height: min(geometry.size.width, geometry.size.height) * 0.8)
                             .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.25)
                     }
-                    
-                    //Menu button
-                    Image("Back Button")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 150)
-                        .onTapGesture {
-                        timeRemaining = 120
-                               }
                 }
              }
             }
@@ -333,7 +334,7 @@ struct GameScreenView5: View {
             timeRemaining = 120 // Reset the timer to 2 minutes
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if timeRemaining > 0 {
-                    timeRemaining -= 2
+                    timeRemaining -= 60
                 } else {
                     timer.invalidate()
                 }
