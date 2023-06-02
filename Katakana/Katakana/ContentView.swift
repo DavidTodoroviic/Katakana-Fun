@@ -20,11 +20,18 @@ struct ContentView: View {
             NavigationView {
                 ZStack {
                     // Add the background image
-                    Image("Main_menu__logo")
+                    Image("Katakana cards stars BG")
                         .resizable()
                         .scaledToFill()
-                        .scaleEffect(1.1)
+                        .scaleEffect(1.2)
                         .edgesIgnoringSafeArea(.all)
+                    VStack {
+                        Image("Katakana_fun_symbol")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 200)
+                    }
+                    .padding(.bottom, 550)
                     VStack(spacing: 10) {
                         NavigationLink(destination: MenuView()) {
                             Image("Flashcards Button")
@@ -52,7 +59,7 @@ struct ContentView: View {
                                 .cornerRadius(10)
                         }
                     }
-                    .padding(.top, 100)
+                    .padding(.top, 150)
                 }
                 .navigationBarHidden(true)
             }

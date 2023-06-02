@@ -15,16 +15,17 @@ struct InfoView: View {
     var body: some View {
         ZStack {
             // Add the background image
-            Image("Katakana cards stars BG")
+            Image("Faded BG")
                 .resizable()
                 .scaledToFill()
+                .scaleEffect(1.2)
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
-                Text("Info") // Title of the info view
-                    .font(.largeTitle)
-                    .padding()
-                    .foregroundColor(.white)
+//                Text("Info") // Title of the info view
+//                    .font(.largeTitle)
+//                    .padding()
+//                    .foregroundColor(.black)
                 
                 ScrollView {
                     VStack(alignment: .leading){
@@ -40,8 +41,8 @@ struct InfoView: View {
                         Text("For more information, fun ideas and free resources, please visit www.japres.com.au")
                     }
                     .font(Font.custom("Comic Sans MS", size: textSize))
-                    .padding([.leading, .trailing], 20)
-                    .foregroundColor(.white)
+                    .padding([.leading, .trailing], 100)
+                    .foregroundColor(.black)
                 }
                 
                 Button(action: {
