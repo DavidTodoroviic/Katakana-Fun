@@ -22,28 +22,12 @@ struct InfoView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
-//                Text("Info") // Title of the info view
-//                    .font(.largeTitle)
-//                    .padding()
-//                    .foregroundColor(.black)
-                
                 ScrollView {
-                    VStack(alignment: .leading){
-                        Text("Welcome to the Japres Japanese Vocabulary Study Buddy App!")
-                        Text("This app has been created to bring a little enjoyment to learning Japanese.")
-                        Text("The ") + Text(studyRed).foregroundColor(.red) + Text(" section contains vocabulary cards with anime characters and includes a Japanese word written in hiragana/katakana, kanji and romaji as well as the English meaning.")
-                        Text("You can choose from a range of topics and once you have learned each topic you can play the games to practise your Japanese knowledge.")
-                        Text("The games have been designed to allow you to play as soon as you have learned one topic.")
-                        Text("You can select the topic(s) you have learned at the start of each game and only the vocabulary related to those topics will appear in the games.")
-                        Text("Depending on your Japanese knowledge, you can choose to play each game in ‘romaji’ (English letters for each word) or in ‘kana’ (hiragana and katakana scripts).")
-                        Text("We hope by playing the games you will learn Japanese vocabulary easily and have fun while learning.")
-                        Text("A special thankyou to my friend, Atsuya for recording the authentic Japanese pronunciation audio files used throughout the app.")
-                        Text("For more information, fun ideas and free resources, please visit www.japres.com.au")
-                    }
-                    .font(Font.custom("Comic Sans MS", size: textSize))
-                    .padding([.leading, .trailing], 100)
-                    .foregroundColor(.black)
-                }
+                    Text("Welcome to the Japres Japanese Vocabulary Study Buddy App! This app has been created to bring a little enjoyment to learning Japanese. The study section contains vocabulary cards with anime characters and includes a Japanese word written in hiragana/katakana, kanji and romaji as well as the English meaning. You can choose from a range of topics and once you have learned each topic you can play the games to practise your Japanese knowledge. The games have been designed to allow you to play as soon as you have learned one topic. You can select the topic(s) you have learned at the start of each game and only the vocabulary related to those topics will appear in the games. Depending on your Japanese knowledge, you can choose to play each game in ‘romaji’ (English letters for each word) or in ‘kana’ (hiragana and katakana scripts). We hope by playing the games you will learn Japanese vocabulary easily and have fun while learning. \n\nA special thankyou to my friend, Atsuya for recording the authentic Japanese pronunciation audio files used throughout the app.\n\nFor more information, fun ideas and free resources, please visit www.japres.com.au")
+                    .font(.custom("Comic Sans MS", size: textSize))
+                    .frame(maxWidth: 350, alignment: .leading)
+                    .foregroundColor(.white)
+                } // close brace for scroll view
                 
                 Button(action: {
                     withAnimation {
@@ -51,14 +35,13 @@ struct InfoView: View {
                     }
                 }) {
                     Text("Back to Main Menu") // Button to go back to the main menu
-                        .padding()
                         .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
                         .background(Color.secondary)
                         .cornerRadius(10)
                         .padding([.leading, .trailing], 20)
                 }
-            }
+            } // close brace for VStack
             .navigationBarTitle("Info", displayMode: .large) // Set the navigation bar title
         }
     }

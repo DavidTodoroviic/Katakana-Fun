@@ -18,7 +18,6 @@ struct Game2InfoView: View {
                 .resizable()
                 .scaledToFill()
                 .scaleEffect(1.3)
-                //.edgesIgnoringSafeArea(.all)
             VStack(spacing: 10) {
                 Image("Game 2 Info")
                     .resizable()
@@ -26,8 +25,6 @@ struct Game2InfoView: View {
                     .scaledToFill()
                     .scaleEffect(0.67)
                     .position(x: 250, y: 380)
-                    //.frame(width: 400, height: 400)
-                
                 HStack {
                     // Start button
                     NavigationLink(destination: Game2ScreenView()) {
