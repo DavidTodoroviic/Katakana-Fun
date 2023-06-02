@@ -1,6 +1,11 @@
 import SwiftUI
 import AVFoundation
 
+struct Katakana {
+    let character: String
+    let romaji: String
+    let sound: String
+}
 
 struct GameScreenView: View {
     @State private var soundPlayer: AVAudioPlayer?
@@ -41,6 +46,56 @@ struct GameScreenView: View {
     
     @State private var isFirstTime = true
     @State private var previousTimeRemaining = 150
+    
+    let allOptions: [Katakana] = [
+        Katakana(character: "ア", romaji: "a", sound: "ア  a-o/1_A"),
+        Katakana(character: "イ", romaji: "i", sound: "イ  a-o/2_I"),
+        Katakana(character: "ウ", romaji: "u", sound: "ウ  a-o/3_U"),
+        Katakana(character: "エ", romaji: "e", sound: "エ  a-o/4_E"),
+        Katakana(character: "オ", romaji: "o", sound: "オ  a-o/5_O"),
+        Katakana(character: "カ", romaji: "ka", sound: "カ  ka-ko/6_KA"),
+        Katakana(character: "キ", romaji: "ki", sound: "キ  ka-ko/7_KI"),
+        Katakana(character: "ク", romaji: "ku", sound: "ク  ka-ko/8_KU"),
+        Katakana(character: "ケ", romaji: "ke", sound: "ケ  ka-ko/9_KE"),
+        Katakana(character: "コ", romaji: "ko", sound: "コ  ka-ko/10_KO"),
+        Katakana(character: "サ", romaji: "sa", sound: "サ  sa-to/11_SA"),
+        Katakana(character: "シ", romaji: "shi", sound: "シ  sa-to/12_SHI"),
+        Katakana(character: "ス", romaji: "su", sound: "ス  sa-to/13_SU"),
+        Katakana(character: "セ", romaji: "se", sound: "セ  sa-to/14_SE"),
+        Katakana(character: "ソ", romaji: "so", sound: "ソ  sa-to/15_SO"),
+        Katakana(character: "タ", romaji: "ta", sound: "タ  sa-to/16_TA"),
+        Katakana(character: "チ", romaji: "chi", sound: "チ  sa-to/17_CHI"),
+        Katakana(character: "ツ", romaji: "tsu", sound: "ツ  sa-to/18_TSU"),
+        Katakana(character: "テ", romaji: "te", sound: "テ  sa-to/19_TE"),
+        Katakana(character: "ト", romaji: "to", sound: "ト  sa-to/20_TO"),
+        Katakana(character: "ナ", romaji: "na", sound: "ナ  na-ho/21_NA"),
+        Katakana(character: "ニ", romaji: "ni", sound: "ニ  na-ho/22_NI"),
+        Katakana(character: "ヌ", romaji: "nu", sound: "ヌ  na-ho/23_NU"),
+        Katakana(character: "ネ", romaji: "ne", sound: "ネ  na-ho/24_NE"),
+        Katakana(character: "ノ", romaji: "no", sound: "ノ  na-ho/25_NO"),
+        Katakana(character: "ハ", romaji: "ha", sound: "ハ  na-ho/26_HA"),
+        Katakana(character: "ヒ", romaji: "hi", sound: "ヒ  na-ho/27_HI"),
+        Katakana(character: "フ", romaji: "fu", sound: "フ  na-ho/28_FU"),
+        Katakana(character: "ヘ", romaji: "he", sound: "ヘ  na-ho/29_HE"),
+        Katakana(character: "ホ", romaji: "ho", sound: "ホ  na-ho/30_HO"),
+        Katakana(character: "マ", romaji: "ma", sound: "マ  ma-ro/31_MA"),
+        Katakana(character: "ミ", romaji: "mi", sound: "ミ  ma-ro/32_MI"),
+        Katakana(character: "ム", romaji: "mu", sound: "ム  ma-ro/33_MU"),
+        Katakana(character: "メ", romaji: "me", sound: "メ  ma-ro/34_ME"),
+        Katakana(character: "モ", romaji: "mo", sound: "モ  ma-ro/35_MO"),
+        Katakana(character: "ヤ", romaji: "ya", sound: "ヤ  ya-n/36_YA"),
+        Katakana(character: "ユ", romaji: "yu", sound: "ユ  ya-n/37_YU"),
+        Katakana(character: "ヨ", romaji: "yo", sound: "ヨ  ya-n/38_YO"),
+        Katakana(character: "ラ", romaji: "ra", sound: "ラ  ra-ro/39_RA"),
+        Katakana(character: "リ", romaji: "ri", sound: "リ  ra-ro/40_RI"),
+        Katakana(character: "ル", romaji: "ru", sound: "ル  ra-ro/41_RU"),
+        Katakana(character: "レ", romaji: "re", sound: "レ  ra-ro/42_RE"),
+        Katakana(character: "ロ", romaji: "ro", sound: "ロ  ra-ro/43_RO"),
+        Katakana(character: "ワ", romaji: "wa", sound: "ワ  wa-n/44_WA"),
+        Katakana(character: "ヲ", romaji: "wo", sound: "ヲ  wa-n/45_WO"),
+        Katakana(character: "ン", romaji: "n", sound: "ン  wa-n/46_N")
+        // Add other characters if necessary, like "ガ", "ギ", "グ", "ゲ", "ゴ", etc.
+    ]
     
     var body: some View {
         ZStack {
@@ -128,6 +183,8 @@ struct GameScreenView: View {
                     
                 }
             }
+            .navigationBarHidden(true)
+            .navigationViewStyle(StackNavigationViewStyle())
             .onAppear {
                 if isFirstTime {
                     generateNewOptions()
@@ -182,23 +239,15 @@ struct GameScreenView: View {
     }
     
     func generateNewOptions() {
-        let allKatakanaOptions = [
-            "ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ", "サ", "シ", "ス", "セ", "ソ","タ", "チ", "ツ", "テ", "ト",
-            "ナ", "ニ", "ヌ", "ネ", "ノ", "ハ", "ヒ", "フ", "ヘ", "ホ", "マ", "ミ", "ム", "メ", "モ", "ヤ", "ユ", "ヨ",
-            "ラ", "リ", "ル", "レ", "ロ","ワ", "ン"]
-
-        let allRomajiOptions = ["a", "i", "u", "e", "o", "ka", "ki", "ku", "ke", "ko", "sa", "shi", "su", "se", "so", "ta", "chi", "tsu", "te", "to", "na", "ni", "nu", "ne", "no", "ha", "hi", "fu", "he", "ho", "ma", "mi", "mu", "me", "mo", "ya", "yu", "yo", "ra", "ri", "ru", "re", "ro", "wa", "n"]
-        let allSoundOptions = [
-            "ア  a-o/1_A", "イ  a-o/2_I", "ウ  a-o/3_U", "エ  a-o/4_E", "オ  a-o/5_O", "カ  ka-ko/6_KA", "キ  ka-ko/7_KI", "ク  ka-ko/8_KU", "ケ  ka-ko/9_KE", "コ  ka-ko/10_KO", "サ  sa-to/11_SA", "シ  sa-to/12_SHI", "ス  sa-to/13_SU", "セ  sa-to/14_SE", "ソ  sa-to/15_SO", "タ  sa-to/16_TA", "チ  sa-to/17_CHI", "ツ  sa-to/18_TSU", "テ  sa-to/19_TE", "ト  sa-to/20_TO", "ナ  na-ho/21_NA", "ニ  na-ho/22_NI", "ヌ  na-ho/23_NU", "ネ  na-ho/24_NE", "ノ  na-ho/25_NO", "ハ  na-ho/26_HA", "ヒ  na-ho/27_HI", "フ  na-ho/28_FU", "ヘ  na-ho/29_HE", "ホ  na-ho/30_HO", "マ  ma-n/31_MA", "ミ  ma-n/32_MI", "ム  ma-n/33_MU", "メ  ma-n/34_ME", "モ  ma-n/35_MO", "ヤ  ma-n/36_YA", "ユ  ma-n/37_YU", "ヨ  ma-n/38_YO", "ラ  ma-n/39_RA", "リ  ma-n/40_RI", "ル  ma-n/41_RU", "レ  ma-n/42_RE", "ロ  ma-n/43_RO", "ワ  ma-n/44_WA", "ン  ma-n/45_N"
-        ]
+        let selectedOptions = allOptions.shuffled().prefix(10)
         
         // Generate new options
-        katakana4Options = allKatakanaOptions.shuffled().prefix(45).map { $0 }
-        romajiOptions = allRomajiOptions.shuffled().prefix(45).map { $0 }
-        soundOptions = allSoundOptions.shuffled().prefix(45).map { $0 }
+        katakana4Options = selectedOptions.map { $0.character }
+        romajiOptions = selectedOptions.map { $0.romaji }
+        soundOptions = selectedOptions.map { $0.sound }
         
         // Select correct options
-        let correctIndex = Int.random(in: 0..<45)
+        let correctIndex = Int.random(in: 0..<10)
         correctKatakana = katakana4Options[correctIndex]
         correctRomaji = romajiOptions[correctIndex]
         correctSound = soundOptions[correctIndex]
