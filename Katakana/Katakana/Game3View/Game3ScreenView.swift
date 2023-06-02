@@ -13,7 +13,7 @@ import Darwin
 struct Game3ScreenView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var time_remaining = 120
+    @State private var time_remaining = 60
     @State private var timer: Timer?
     @State private var score = 0
     @State private var total_balloons_popped = 0
@@ -54,7 +54,7 @@ struct Game3ScreenView: View {
     
     var body: some View {
         // start screen
-        if time_remaining == 120
+        if time_remaining == 60
         {
             VStack {
                 Image("Start Button")
@@ -112,7 +112,6 @@ struct Game3ScreenView: View {
                     .scaledToFill()
                     .scaleEffect(1.3)
                 VStack {
-                    //Text("\(rand_indices)")
                     Text("Score: \(score)")
                         .font(.custom("Comic Sans MS", size: 40))
                     HStack {
@@ -122,7 +121,7 @@ struct Game3ScreenView: View {
                 .padding(.bottom, 105)
             }
         }
-        if time_remaining < 120 && time_remaining != 0
+        if time_remaining < 60 && time_remaining != 0
         {
             // play the game
            
@@ -357,7 +356,7 @@ struct Game3ScreenView: View {
     
     //Start timer
     func startTimer() {
-        time_remaining = 120 // Reset the timer
+        time_remaining = 60 // Reset the timer
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if time_remaining > 0 {
                 time_remaining -= 1

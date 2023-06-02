@@ -25,11 +25,12 @@ struct ContentView: View {
                         .scaledToFill()
                         .scaleEffect(1.1)
                         .edgesIgnoringSafeArea(.all)
-                    VStack(spacing: 20) {
+                    VStack(spacing: 10) {
                         NavigationLink(destination: MenuView()) {
                             Image("Flashcards Button")
                                 .resizable()
-                                .frame(width: 180, height: 40)
+                                .scaledToFit()
+                                .frame(width: 200, height: 60)
                                 .cornerRadius(10)
                         }
                         
@@ -37,7 +38,8 @@ struct ContentView: View {
                             NavigationLink(destination: gameViews[index].1.environment(\.managedObjectContext, viewContext)) {
                                 Image(buttonImages[index % buttonImages.count])
                                     .resizable()
-                                    .frame(width: 180, height: 40)
+                                    .scaledToFit()
+                                    .frame(width: 200, height: 60)
                                     .cornerRadius(10)
                             }
                         }
@@ -45,10 +47,12 @@ struct ContentView: View {
                         NavigationLink(destination: InfoView().environment(\.managedObjectContext, viewContext)) {
                             Image("Info Button")
                                 .resizable()
-                                .frame(width: 100, height: 40)
+                                .scaledToFit()
+                                .frame(width: 200, height: 60)
                                 .cornerRadius(10)
                         }
                     }
+                    .padding(.top, 100)
                 }
                 .navigationBarHidden(true)
             }
@@ -56,3 +60,8 @@ struct ContentView: View {
         }
     }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
