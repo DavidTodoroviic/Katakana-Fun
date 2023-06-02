@@ -65,7 +65,7 @@ struct Game3ScreenView: View {
         if time_remaining == 60
         {
             VStack {
-                Text("Press start when ready!")
+                Text("Ready?")
                     .font(.title2)
                     .fontWeight(.bold)
                     .padding(20)
