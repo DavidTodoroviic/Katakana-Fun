@@ -190,7 +190,7 @@ struct GameScreenView5: View {
             }
         
             //Game Start screen
-            if timeRemaining < 149 && timeRemaining != 0{
+            if timeRemaining < 150 && timeRemaining != 0{
                 ZStack {
                 //background
                 Image("Game 5")
@@ -309,8 +309,7 @@ struct GameScreenView5: View {
                            
                         }
                     }
-                }.navigationBarHidden(true)
-                 .navigationBarBackButtonHidden(true)
+                }
             }
             
         }
