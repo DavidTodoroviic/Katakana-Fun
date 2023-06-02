@@ -183,6 +183,8 @@ struct GameScreenView: View {
                     
                 }
             }
+            .navigationBarHidden(true)
+            .navigationViewStyle(StackNavigationViewStyle())
             .onAppear {
                 if isFirstTime {
                     generateNewOptions()

@@ -83,6 +83,8 @@ struct Game4MainView: View {
                         .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.6)
                 }
             }
+            
+        
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -95,5 +97,7 @@ struct Game4MainView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

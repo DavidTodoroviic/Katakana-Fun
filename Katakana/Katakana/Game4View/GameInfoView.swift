@@ -15,7 +15,6 @@ struct GameInfoView: View {
                 .aspectRatio(contentMode: .fit)
                 .edgesIgnoringSafeArea(.all)
         }
-        .navigationBarTitle("Information", displayMode: .inline)
     }
 }
 
