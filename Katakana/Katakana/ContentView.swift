@@ -6,7 +6,7 @@ struct ContentView: View {
     
     let gameViews: [(String, AnyView)] = [
         ("", AnyView(Game1MainView())), // Game 1 view
-        ("", AnyView(Game2View())), // Game 2 view
+        ("", AnyView(Game2MainView())), // Game 2 view
         ("", AnyView(Game3InfoView())), // Game 3 view
         ("", AnyView(Game4MainView())), // Game 4 view
         ("", AnyView(Game5MainView())), // Game 5 view
