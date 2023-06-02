@@ -19,7 +19,7 @@ struct Game2ScreenView: View {
             Image("Game 2 Game Screen")
                 .resizable()
                 .scaledToFill()
-                .scaleEffect(1.2)
+                .scaleEffect(1.3)
         }
     }
     

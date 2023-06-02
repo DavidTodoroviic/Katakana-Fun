@@ -20,7 +20,7 @@ struct Game2MainView: View {
     var body: some View {
         ZStack {
             // background image
-            Image("Katakana cards stars BG")
+            Image("Faded BG")
                 .resizable()
                 .scaleEffect(1.1)
                 .scaledToFill()
@@ -100,10 +100,10 @@ struct Game2MainView: View {
             VStack(spacing: 17) {
                 Text("Game 2")
                     .font(.custom("Comic Sans MS", size: 38))
-                    .foregroundColor(.pink)
+                    .foregroundColor(.orange)
                 Text("Select Characters")
                     .font(.custom("Comic Sans MS", size: 35))
-                    .foregroundColor(.pink)
+                    .foregroundColor(.orange)
                 
                     .padding(.bottom, 500)
             }

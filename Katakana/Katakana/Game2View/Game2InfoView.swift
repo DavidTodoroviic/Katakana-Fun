@@ -17,7 +17,7 @@ struct Game2InfoView: View {
             Image("Game 2 Game Screen")
                 .resizable()
                 .scaledToFill()
-                .scaleEffect(1.2)
+                .scaleEffect(1.3)
                 //.edgesIgnoringSafeArea(.all)
             VStack(spacing: 10) {
                 Image("Game 2 Info")
