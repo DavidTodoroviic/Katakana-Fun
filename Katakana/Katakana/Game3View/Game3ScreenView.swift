@@ -288,7 +288,6 @@ struct Game3ScreenView: View {
     
     func check_local_win()
     {
-        // index is passed so loons_won can be updated
         if !scale.allSatisfy ({ $0 == 1.0 })
         {
             if pressed_count == 2

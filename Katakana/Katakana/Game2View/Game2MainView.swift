@@ -37,7 +37,7 @@ struct Game2MainView: View {
                     .fill(.white)
                     .frame(width: 320, height: 50)
 
-                NavigationLink(destination: Game2InfoView()) {
+                NavigationLink(destination: Game2ScreenView()) {
                     Image("Next Button")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
