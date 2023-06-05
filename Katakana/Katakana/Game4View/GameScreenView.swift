@@ -27,6 +27,7 @@ struct GameScreenView: View {
     @State private var timer: Timer?
     @State private var score = 0
     @State private var stopTimer = false
+    @State private var correctIndex = 0
     
     @State private var hasGameEnded = false {
         didSet {
@@ -121,7 +122,10 @@ struct GameScreenView: View {
                             .frame(width: 100, height: 120)
                             .clipped()
                             .padding(.horizontal)
-                            
+                            .onChange(of: selectedKatakanaIndex) { _ in
+                                checkForWinning()
+                            }
+
                             Picker(selection: $selectedRomajiIndex.animation(), label: Text("Choose Romaji")) {
                                 ForEach(0..<romajiOptions.count) { index in
                                     Text(romajiOptions[index])
@@ -134,7 +138,10 @@ struct GameScreenView: View {
                             .frame(width: 100, height: 120)
                             .clipped()
                             .padding(.horizontal)
-                            
+                            .onChange(of: selectedRomajiIndex) { _ in
+                                checkForWinning()
+                            }
+
                             Picker(selection: $selectedSoundIndex.animation(), label: Text("Choose Sound")) {
                                 ForEach(0..<soundOptions.count) { index in
                                     Text(soundOptions[index])
@@ -147,13 +154,14 @@ struct GameScreenView: View {
                             .frame(width: 100, height: 120)
                             .clipped()
                             .padding(.horizontal)
-                            .onChange(of: selectedSoundIndex) { newValue in
-                                let selectedSoundName = soundOptions[newValue]
+                            .onChange(of: selectedSoundIndex) { _ in
+                                let selectedSoundName = soundOptions[selectedSoundIndex]
                                 playSound(soundName: selectedSoundName)
+                                checkForWinning()
                             }
                         }
                         
-                        Spacer().frame(height: 400)
+                        Spacer().frame(height: 350)
                         
                     }
                     .padding()
@@ -169,18 +177,16 @@ struct GameScreenView: View {
 
                     .navigationBarBackButtonHidden(true)
                     
+                    NavigationLink(destination: Game4WinView(restartTimer: self.restartTimer, remainingTime: self.timeRemaining, stopTimer: self.$stopTimer, hasGameWon: self.$hasGameWon, score: self.$score), isActive: $hasGameWon) {
+                        EmptyView()
+                    }
+                    .hidden()
+
+
                     NavigationLink(destination: Game4LoseView(restartTimer: self.restartTimer, remainingTime: self.$timeRemaining, score: self.$score), isActive: $hasGameEnded) {
                         EmptyView()
                     }
                     .hidden()
-                    
-                    NavigationLink(destination: Game4WinView(restartTimer: self.restartTimer, remainingTime: self.timeRemaining, stopTimer: self.$stopTimer, hasGameWon: self.$hasGameWon), isActive: $hasGameWon) {
-                        EmptyView()
-                    }
-
-                    
-                    .hidden()
-                    
                 }
             }
             .navigationBarHidden(true)
@@ -201,6 +207,7 @@ struct GameScreenView: View {
                     Spacer()
                     HStack(spacing: 0) {
                         Button(action: {
+                            hasGameWon = false
                             previousTimeRemaining = timeRemaining
                             generateNewOptions()
                             restartTimer()
@@ -224,6 +231,9 @@ struct GameScreenView: View {
                         
                         Button(action: {
                             checkForWinning()
+                            if score >= 5 { // Check if score is 5 or greater
+                                hasGameWon = true // Set hasGameWon to true
+                            }
                         }) {
                             Image("Unlock button")
                                 .resizable()
@@ -239,42 +249,48 @@ struct GameScreenView: View {
     }
     
     func generateNewOptions() {
-        let selectedOptions = allOptions.shuffled().prefix(10)
-        
+        let selectedOptions = allOptions.shuffled().prefix(4)
+
         // Generate new options
         katakana4Options = selectedOptions.map { $0.character }
         romajiOptions = selectedOptions.map { $0.romaji }
         soundOptions = selectedOptions.map { $0.sound }
-        
+
         // Select correct options
-        let correctIndex = Int.random(in: 0..<10)
+        correctIndex = Int.random(in: 0..<4)
         correctKatakana = katakana4Options[correctIndex]
         correctRomaji = romajiOptions[correctIndex]
         correctSound = soundOptions[correctIndex]
-        
+
         // Reset selected indices and chestUnlocked
         selectedKatakanaIndex = 0
         selectedRomajiIndex = 0
         selectedSoundIndex = 0
         chestUnlocked = false
     }
-    
+
     func checkForWinning() {
-        if !hasGameWon && correctKatakana == katakana4Options[selectedKatakanaIndex]
-            && correctRomaji == romajiOptions[selectedRomajiIndex]
-            && correctSound == soundOptions[selectedSoundIndex] {
-            
+        let selectedKatakana = katakana4Options[selectedKatakanaIndex]
+        let selectedRomaji = romajiOptions[selectedRomajiIndex]
+        let selectedSound = soundOptions[selectedSoundIndex]
+        
+        if selectedKatakana == correctKatakana && selectedRomaji == correctRomaji && selectedSound == correctSound {
             score += 1
-            if score >= 5 {
-                hasGameWon = true
-                score = 0 // reset the score for the next game
-            } else {
-                generateNewOptions()
+            hasGameWon = score >= 5 // Check if the score is equal to or greater than 5
+            print("Correct Combination")
+            print("Score: \(score)")
+            
+            if hasGameWon {
+                print("Game Won!")
             }
+        } else {
+            hasGameWon = false
+            print("Incorrect Combination")
+            print("Selected: \(selectedKatakana), \(selectedRomaji), \(selectedSound)")
+            print("Correct: \(correctKatakana), \(correctRomaji), \(correctSound)")
         }
-        playSound(soundName: correctSound)
     }
-    
+
     func restartTimer() {
         timeRemaining = previousTimeRemaining
         timer?.invalidate()

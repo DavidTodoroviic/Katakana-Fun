@@ -5,7 +5,8 @@ struct Game4WinView: View {
     var restartTimer: (() -> Void)?
     var remainingTime: Int
     @Binding var stopTimer: Bool
-    @Binding var hasGameWon: Bool // Add this line
+    @Binding var hasGameWon: Bool
+    @Binding var score: Int
     
     var body: some View {
         GeometryReader { geometry in
@@ -14,26 +15,27 @@ struct Game4WinView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
-                    .offset(x: -70)
-                
-                VStack {
-                    Spacer()
-                    
+                    .offset(x: -60)
+                        
+                    VStack {
+                        Spacer()
+        
                     Text("Remaining time: \(remainingTime / 60):\(String(format: "%02d", remainingTime % 60))")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.pink)
                         .padding(.top, 100)
-                        .padding(.bottom, 445)
+                        .padding(.bottom, 245)
                     
                     Spacer()
                     
-                    HStack(spacing: 24) { // Adjust the spacing as needed
+                    HStack(spacing: 24) {
                         Button(action: {
-                            self.restartTimer?()
-                            self.stopTimer = true
-                            self.hasGameWon = false // Reset the game win state
-                            presentationMode.wrappedValue.dismiss()
+                                self.restartTimer?()
+                                self.stopTimer = true
+                                self.hasGameWon = false
+                                self.score = 0 // Reset the score
+                                presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Play Again")
                                 .font(.title2)
@@ -45,9 +47,11 @@ struct Game4WinView: View {
                         }
                         
                         Button(action: {
-                            self.restartTimer?()
-                            self.stopTimer = true
-                            presentationMode.wrappedValue.dismiss()
+                                self.restartTimer?()
+                                self.stopTimer = true
+                                self.hasGameWon = false
+                                self.score = 0 // Reset the score
+                                presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Back")
                                 .font(.title2)
@@ -58,13 +62,14 @@ struct Game4WinView: View {
                                 .cornerRadius(50)
                         }
                     }
+                    .padding(.top, 170)
                 }
-                .offset(x: -17)
+                .offset(x: -40)
             }
-            .frame(width: geometry.size.width, height: geometry.size.height) // Add this line to make the image fit the entire screen
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(trailing: EmptyView())
     }
 }
+

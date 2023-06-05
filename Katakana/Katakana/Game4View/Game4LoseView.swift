@@ -21,8 +21,8 @@ struct Game4LoseView: View {
                     HStack(spacing: 25) {
                         Button(action: {
                             self.restartTimer?()
-                            self.score = 0
-                            self.remainingTime = 150
+                            self.score = 0 // Reset the score
+                            self.remainingTime = 150 // Reset the remaining time
                             presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Play Again")
@@ -36,8 +36,8 @@ struct Game4LoseView: View {
                         
                         Button(action: {
                             self.restartTimer?()
-                            self.score = 0
-                            self.remainingTime = 150
+                            self.score = 0 // Reset the score
+                            self.remainingTime = 150 // Reset the remaining time
                             presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Back")
@@ -51,7 +51,7 @@ struct Game4LoseView: View {
                     }
                     .padding(.bottom, 20)
                 }
-                .offset(x: -40)
+                .offset(x: -80)
             }
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -59,3 +59,4 @@ struct Game4LoseView: View {
         .navigationBarItems(trailing: EmptyView())
     }
 }
+
