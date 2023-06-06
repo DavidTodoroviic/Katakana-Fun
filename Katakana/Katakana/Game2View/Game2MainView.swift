@@ -20,7 +20,7 @@ struct Game2MainView: View {
     var body: some View {
         ZStack {
             // background image
-            Image("Faded BG")
+            Image("Katakana cards stars BG")
                 .resizable()
                 .scaleEffect(1.1)
                 .scaledToFill()
