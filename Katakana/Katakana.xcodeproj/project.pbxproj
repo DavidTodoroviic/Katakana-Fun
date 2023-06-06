@@ -217,8 +217,6 @@
 		3E44A1832A28742800D5E1C8 /* 49_GU.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E44A16C2A28742800D5E1C8 /* 49_GU.mp3 */; };
 		3E44A1842A28742800D5E1C8 /* 62_BU.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E44A16D2A28742800D5E1C8 /* 62_BU.mp3 */; };
 		3E44A1852A28742800D5E1C8 /* 68_PE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E44A16E2A28742800D5E1C8 /* 68_PE.mp3 */; };
-		3E451A8D29FF52BB000653D3 /* Game2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A8C29FF52BB000653D3 /* Game2View.swift */; };
-		3E451A8F29FF52CA000653D3 /* Game3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A8E29FF52CA000653D3 /* Game3View.swift */; };
 		3E451A9529FF5310000653D3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451A9429FF5310000653D3 /* InfoView.swift */; };
 		3EB470BA2A09A8170070D5BF /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3EB470B92A09A8170070D5BF /* ConfettiSwiftUI */; };
 		3EB470BD2A09A9180070D5BF /* EffectsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 3EB470BC2A09A9180070D5BF /* EffectsLibrary */; };
@@ -469,8 +467,6 @@
 		3E44A16C2A28742800D5E1C8 /* 49_GU.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 49_GU.mp3; sourceTree = "<group>"; };
 		3E44A16D2A28742800D5E1C8 /* 62_BU.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 62_BU.mp3; sourceTree = "<group>"; };
 		3E44A16E2A28742800D5E1C8 /* 68_PE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 68_PE.mp3; sourceTree = "<group>"; };
-		3E451A8C29FF52BB000653D3 /* Game2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game2View.swift; sourceTree = "<group>"; };
-		3E451A8E29FF52CA000653D3 /* Game3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game3View.swift; sourceTree = "<group>"; };
 		3E451A9429FF5310000653D3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		3EC6746D29FF4A1100F1C8E3 /* Katakana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Katakana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EC6747029FF4A1100F1C8E3 /* KatakanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatakanaApp.swift; sourceTree = "<group>"; };
@@ -859,9 +855,7 @@
 				3EC6747029FF4A1100F1C8E3 /* KatakanaApp.swift */,
 				3EC6747229FF4A1100F1C8E3 /* ContentView.swift */,
 				3E2EB0D62A03252B0025ACBB /* landingView.swift */,
-				3E451A8C29FF52BB000653D3 /* Game2View.swift */,
 				3E44A0AC2A2873C800D5E1C8 /* Game1View */,
-				3E451A8E29FF52CA000653D3 /* Game3View.swift */,
 				3E451A9429FF5310000653D3 /* InfoView.swift */,
 				3EC6747429FF4A1200F1C8E3 /* Assets.xcassets */,
 				3EC6747929FF4A1200F1C8E3 /* Persistence.swift */,
@@ -1256,13 +1250,11 @@
 				3E451A9529FF5310000653D3 /* InfoView.swift in Sources */,
 				3E44A0AB2A28735000D5E1C8 /* Game4WinView.swift in Sources */,
 				1615AF8B2A1E47AB003E419F /* KataSequence.swift in Sources */,
-				3E451A8D29FF52BB000653D3 /* Game2View.swift in Sources */,
 				16B93A022A0CD4B700AAEC70 /* Game5MainView.swift in Sources */,
 				3E44A0B12A2873C800D5E1C8 /* Game1ScreenView.swift in Sources */,
 				3E44A0A92A28735000D5E1C8 /* Game4LoseView.swift in Sources */,
 				165CAF082A2644760045AB1C /* Fonts.swift in Sources */,
 				3E44A0B42A2873C800D5E1C8 /* Game1MainView.swift in Sources */,
-				3E451A8F29FF52CA000653D3 /* Game3View.swift in Sources */,
 				C3A6E8DE2A1C756C00309AE8 /* Game3MainView.swift in Sources */,
 				3E44A0B32A2873C800D5E1C8 /* Game1InfoView.swift in Sources */,
 				3E2EB0D72A03252B0025ACBB /* landingView.swift in Sources */,
