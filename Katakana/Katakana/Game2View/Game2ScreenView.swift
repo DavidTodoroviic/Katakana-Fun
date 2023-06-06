@@ -115,7 +115,7 @@ struct Game2ScreenView: View {
                 .padding(.bottom, 30)
             }
         }
-        if score == 10
+        if score == 15
         {
             ZStack {
                 Image("Game 2 win")
@@ -123,14 +123,14 @@ struct Game2ScreenView: View {
                     .scaledToFill()
                     .scaleEffect(1.3)
                 VStack {
-                    Text("Score: \(score)")
+                    Text("Well done!")
                         .font(.custom("Comic Sans MS", size: 40))
                 }
                 .padding(.bottom, 105)
             }
         }
         
-        if info_state == 0 && score < 10{
+        if info_state == 0 && score < 15 {
             // gameplay
             ZStack {
                 Image("Game 2 Game Screen")
@@ -139,19 +139,29 @@ struct Game2ScreenView: View {
                     .scaleEffect(1.3)
                 VStack(spacing: 30) {
                     // display score
-                    
+                    //score
+                    Text("Score: \(score)")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(20)
+                        .background(Color.white)
+                        .foregroundColor(.black)
+                        .cornerRadius(40)
                     
                     // spawn shells
                     HStack {
                         // row 1
+                        
                     } // close brace for HStack 1
                     
                     HStack {
                         // row 2
+                        
                     } // close brace for HStack 2
                     
                     HStack {
                         // row 3
+                        
                     } // close brace for HStack 3
                     
                 } // close brace for ZStack
@@ -161,12 +171,24 @@ struct Game2ScreenView: View {
     
     // FUNCTIONS
     
+    func check_valid_rand(num: Int, list: [Int]) -> Bool
+    {
+        for ele in list {
+            if num == ele {
+                // invalid
+                return false
+            }
+        }
+        // valid
+        return true
+    }
+    
     func get_random_indices() -> [Int]
     {
         var indices: [Int] = []
-        let max_index = chosen_group_eng.count
+        let max_index = chosen_group_kata.count
         var count = 0
-        while count < num_balloons
+        while count < num_shells
         {
             // generate random num
             let rand_int = Int(arc4random_uniform(UInt32(max_index)))
@@ -182,7 +204,6 @@ struct Game2ScreenView: View {
         }
         return indices
     }
-    
 }
 
 struct Game2ScreenView_Previews: PreviewProvider {

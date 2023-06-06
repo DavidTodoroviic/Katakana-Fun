@@ -25,18 +25,15 @@ struct Game2MainView: View {
                 .scaleEffect(1.1)
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-            
             VStack(spacing: 5){
                 RoundedRectangle(cornerRadius: 30)
                     .fill(.white)
                     .frame(width: 320, height: 80)
                     .overlay(RoundedRectangle(cornerRadius: 30)
                         .stroke(.black, lineWidth: 5))
-
                 Capsule()
                     .fill(.white)
                     .frame(width: 320, height: 50)
-
                 NavigationLink(destination: Game2ScreenView()) {
                     Image("Next Button")
                         .resizable()
@@ -55,7 +52,6 @@ struct Game2MainView: View {
                                         Button(action: {
                                             let label = chars_selection[(row * cols + column)]
                                             char_selection = label
-                                                
                                         }) {
                                             if (row * cols + column != 7)
                                             {
