@@ -12,16 +12,15 @@ struct Game1ScreenView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var score = 0
-    @State private var questionNumber = 1
     let selectedGroup: Character1Group
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         ZStack {
-            Image("DIAB Game Screen BG") // Replace "backgroundImage" with the actual image name
+            Image("DIAB Game Screen BG")
                 .resizable()
                 .scaledToFit()
-                .scaleEffect(1.7) // Adjust the scale as desired
+                .scaleEffect(1.7)
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
@@ -33,23 +32,23 @@ struct Game1ScreenView: View {
                         self.letterTapped(0)
                     }) {
                         Text(self.selectedGroup.characters[0].1)
-                            .font(.system(size: 40, weight: .bold))
+                            .font(.custom("Comic Sans MS", size: 30))
                             .foregroundColor(.black)
                             .padding(10)
                     }
                 }
-                .padding(.horizontal, 45) // Button 0
+                .padding(.horizontal, 45)
 
                 HStack(spacing: 20) {
                     Button(action: {
                         self.letterTapped(1)
                     }) {
                         Text(self.selectedGroup.characters[1].1)
-                            .font(.system(size: 40, weight: .bold))
+                            .font(.custom("Comic Sans MS", size: 30))
                             .foregroundColor(.black)
                             .padding(10)
                     }
-                    .padding(.horizontal, 25) // Button 1
+                    .padding(.horizontal, 25)
                     .padding(.bottom, 50)
                     
                     Spacer()
@@ -58,11 +57,11 @@ struct Game1ScreenView: View {
                         self.letterTapped(2)
                     }) {
                         Text(self.selectedGroup.characters[2].1)
-                            .font(.system(size: 40, weight: .bold))
+                            .font(.custom("Comic Sans MS", size: 30))
                             .foregroundColor(.black)
                             .padding(10)
                     }
-                    .padding(.top, 150) // Button 2
+                    .padding(.top, 150)
                 }
                 .padding(.horizontal, 45)
 
@@ -71,21 +70,19 @@ struct Game1ScreenView: View {
                         self.letterTapped(3)
                     }) {
                         Text(self.selectedGroup.characters[3].1)
-                            .font(.system(size: 40, weight: .bold))
+                            .font(.custom("Comic Sans MS", size: 30))
                             .foregroundColor(.black)
                             .padding(10)
                     }
                     .padding(.horizontal, 45)
-                    .padding(.top, 30) // Button 3
+                    .padding(.top, 30)
                     
                     Spacer()
                 }
                 .padding(.horizontal, 30)
                 
-
-                // Katakana character
                 Text(selectedGroup.characters[correctAnswer].0)
-                    .font(.system(size: 100, weight: .bold))
+                    .font(Font.custom("UDDigiKyokashoN-B", size: 100))
                     .padding(.top, 200)
 
                 Spacer()
@@ -99,7 +96,7 @@ struct Game1ScreenView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("Quit")
-                            .font(.headline)
+                            .font(.custom("Comic Sans MS", size: 20))
                             .padding()
                             .background(Color.blue)
                             .foregroundColor(.white)
@@ -128,11 +125,6 @@ struct Game1ScreenView: View {
     }
 
     func askQuestion() {
-        if questionNumber < selectedGroup.characters.count {
-            correctAnswer = Int.random(in: 0..<4)
-            questionNumber += 1
-        } else {
-            presentationMode.wrappedValue.dismiss()
-        }
+        correctAnswer = Int.random(in: 0..<4)
     }
 }

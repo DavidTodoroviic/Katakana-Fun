@@ -114,7 +114,7 @@ struct GameScreenView: View {
                                 ForEach(0..<katakana4Options.count) { index in
                                     Text(katakana4Options[index])
                                         .tag(index)
-                                        .font(.largeTitle)
+                                        .font(Font.custom("UDDigiKyokashoN-B", size: 35))
                                 }
                             }
                             .labelsHidden()
@@ -130,7 +130,7 @@ struct GameScreenView: View {
                                 ForEach(0..<romajiOptions.count) { index in
                                     Text(romajiOptions[index])
                                         .tag(index)
-                                        .font(.largeTitle)
+                                        .font(Font.custom("Comic Sans MS", size: 35))
                                 }
                             }
                             .labelsHidden()
@@ -146,7 +146,7 @@ struct GameScreenView: View {
                                 ForEach(0..<soundOptions.count) { index in
                                     Text(soundOptions[index])
                                         .tag(index)
-                                        .font(.largeTitle)
+                                        .font(Font.custom("UDDigiKyokashoN-B", size: 35))
                                 }
                             }
                             .labelsHidden()
@@ -167,11 +167,11 @@ struct GameScreenView: View {
                     .padding()
                     .navigationBarItems(leading:
                         Text("Score: \(score)")
-                            .font(.title)
+                            .font(Font.custom("Comic Sans MS", size: 24))
                             .foregroundColor(.white),
                      trailing:
                         Text("Time: \(timeRemaining / 60):\(String(format: "%02d", timeRemaining % 60))")
-                            .font(.title)
+                            .font(Font.custom("Comic Sans MS", size: 24))
                             .foregroundColor(.white)
                     )
 
