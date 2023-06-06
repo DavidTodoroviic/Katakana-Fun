@@ -229,10 +229,10 @@
 		3EC6748729FF4A1200F1C8E3 /* KatakanaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC6748629FF4A1200F1C8E3 /* KatakanaTests.swift */; };
 		3EC6749129FF4A1200F1C8E3 /* KatakanaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC6749029FF4A1200F1C8E3 /* KatakanaUITests.swift */; };
 		3EC6749329FF4A1200F1C8E3 /* KatakanaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC6749229FF4A1200F1C8E3 /* KatakanaUITestsLaunchTests.swift */; };
+		C392C1A32A2F8FED0057CEB7 /* KatakanaFlashcardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392C1A22A2F8FED0057CEB7 /* KatakanaFlashcardsView.swift */; };
 		C3A6E8DE2A1C756C00309AE8 /* Game3MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A6E8DD2A1C756C00309AE8 /* Game3MainView.swift */; };
 		C3A6E8E22A1C785600309AE8 /* Game3ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A6E8E12A1C785600309AE8 /* Game3ScreenView.swift */; };
 		C3A6E8E42A1C960800309AE8 /* Game3InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A6E8E32A1C960800309AE8 /* Game3InfoView.swift */; };
-		C3A6E8E62A1CF6C600309AE8 /* testfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A6E8E52A1CF6C600309AE8 /* testfile.swift */; };
 		C3F51F8A2A29A36F006F9609 /* Game2InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F51F892A29A36F006F9609 /* Game2InfoView.swift */; };
 		C3F51F8C2A29A37C006F9609 /* Game2MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F51F8B2A29A37C006F9609 /* Game2MainView.swift */; };
 		C3F51F8E2A29A388006F9609 /* Game2ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F51F8D2A29A388006F9609 /* Game2ScreenView.swift */; };
@@ -480,10 +480,10 @@
 		3EC6748C29FF4A1200F1C8E3 /* KatakanaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KatakanaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EC6749029FF4A1200F1C8E3 /* KatakanaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatakanaUITests.swift; sourceTree = "<group>"; };
 		3EC6749229FF4A1200F1C8E3 /* KatakanaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatakanaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C392C1A22A2F8FED0057CEB7 /* KatakanaFlashcardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatakanaFlashcardsView.swift; sourceTree = "<group>"; };
 		C3A6E8DD2A1C756C00309AE8 /* Game3MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game3MainView.swift; sourceTree = "<group>"; };
 		C3A6E8E12A1C785600309AE8 /* Game3ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game3ScreenView.swift; sourceTree = "<group>"; };
 		C3A6E8E32A1C960800309AE8 /* Game3InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game3InfoView.swift; sourceTree = "<group>"; };
-		C3A6E8E52A1CF6C600309AE8 /* testfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testfile.swift; sourceTree = "<group>"; };
 		C3F51F892A29A36F006F9609 /* Game2InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game2InfoView.swift; sourceTree = "<group>"; };
 		C3F51F8B2A29A37C006F9609 /* Game2MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game2MainView.swift; sourceTree = "<group>"; };
 		C3F51F8D2A29A388006F9609 /* Game2ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game2ScreenView.swift; sourceTree = "<group>"; };
@@ -863,7 +863,7 @@
 				C3A6E8DC2A1C752C00309AE8 /* Game3View */,
 				3EC6747B29FF4A1200F1C8E3 /* Katakana.xcdatamodeld */,
 				3EC6747629FF4A1200F1C8E3 /* Preview Content */,
-				C3A6E8E52A1CF6C600309AE8 /* testfile.swift */,
+				C392C1A22A2F8FED0057CEB7 /* KatakanaFlashcardsView.swift */,
 			);
 			path = Katakana;
 			sourceTree = "<group>";
@@ -1269,8 +1269,8 @@
 				3EC6747329FF4A1100F1C8E3 /* ContentView.swift in Sources */,
 				3E44A0A72A28735000D5E1C8 /* Game4MainView.swift in Sources */,
 				3E44A0A82A28735000D5E1C8 /* GameInfoView.swift in Sources */,
+				C392C1A32A2F8FED0057CEB7 /* KatakanaFlashcardsView.swift in Sources */,
 				3E44A0AA2A28735000D5E1C8 /* GameScreenView.swift in Sources */,
-				C3A6E8E62A1CF6C600309AE8 /* testfile.swift in Sources */,
 				1615AF892A1E409E003E419F /* Hint.swift in Sources */,
 				3EC6747129FF4A1100F1C8E3 /* KatakanaApp.swift in Sources */,
 			);

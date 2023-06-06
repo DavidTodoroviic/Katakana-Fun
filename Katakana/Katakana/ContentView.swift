@@ -33,7 +33,7 @@ struct ContentView: View {
                     }
                     .padding(.bottom, 550)
                     VStack(spacing: 10) {
-                        NavigationLink(destination: Game2View()) {
+                        NavigationLink(destination: MenuView()) {
                             Image("Flashcards Button")
                                 .resizable()
                                 .scaledToFit()
