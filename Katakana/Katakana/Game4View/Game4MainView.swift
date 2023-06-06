@@ -44,6 +44,18 @@ struct Game4MainView: View {
                                     .frame(width: 150, height: 150) // Adjust button size here
                             }
                         }
+                        NavigationLink(destination: ContentView()) {
+                            Image(systemName: "chevron.left")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.white)
+                            
+                        }
+                        .padding()
+                        .background(Color.black.opacity(0.5))
+                        .cornerRadius(10)
+                        .padding(.top)
                         Spacer()
                     }
                     .padding(.bottom, 20)

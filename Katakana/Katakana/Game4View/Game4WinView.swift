@@ -15,7 +15,7 @@ struct Game4WinView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
-                    .offset(x: -60)
+                    .offset(x: -70)
                         
                     VStack {
                         Spacer()
@@ -64,7 +64,7 @@ struct Game4WinView: View {
                     }
                     .padding(.top, 170)
                 }
-                .offset(x: -40)
+                .offset(x: -60)
             }
         }
         .navigationBarTitle("", displayMode: .inline)

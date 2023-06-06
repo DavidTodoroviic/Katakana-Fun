@@ -243,6 +243,18 @@ struct GameScreenView: View {
                         .padding()
                         .cornerRadius(10)
                     }
+                    NavigationLink(destination: Game4MainView()) {
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                        
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.5))
+                    .cornerRadius(10)
+                    .padding(.top)
                 }
             }
         }
@@ -273,15 +285,18 @@ struct GameScreenView: View {
         let selectedKatakana = katakana4Options[selectedKatakanaIndex]
         let selectedRomaji = romajiOptions[selectedRomajiIndex]
         let selectedSound = soundOptions[selectedSoundIndex]
-        
+
         if selectedKatakana == correctKatakana && selectedRomaji == correctRomaji && selectedSound == correctSound {
             score += 1
-            hasGameWon = score >= 5 // Check if the score is equal to or greater than 5
             print("Correct Combination")
             print("Score: \(score)")
-            
-            if hasGameWon {
+
+            if score >= 5 {
+                hasGameWon = true
+                stopGameTimer() // Stop the timer when the game is won
                 print("Game Won!")
+            } else {
+                generateNewOptions() // Generate new options when a point is scored
             }
         } else {
             hasGameWon = false
@@ -290,6 +305,7 @@ struct GameScreenView: View {
             print("Correct: \(correctKatakana), \(correctRomaji), \(correctSound)")
         }
     }
+
 
     func restartTimer() {
         timeRemaining = previousTimeRemaining
