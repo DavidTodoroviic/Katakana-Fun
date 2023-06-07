@@ -129,6 +129,7 @@ struct Game3ScreenView: View {
                 VStack {
                     Text("Score: \(score)")
                         .font(.custom("Comic Sans MS", size: 40))
+                        .foregroundColor(.black)
                 }
                 .padding(.bottom, 105)
             }
