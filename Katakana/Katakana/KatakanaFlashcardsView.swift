@@ -1,22 +1,6 @@
 import SwiftUI
 import AVFoundation
-
-struct Flashcard {
-    let frontImageName: String
-    let backImageName: String
-}
-
-let flashcards: [Flashcard] = [
-    Flashcard(frontImageName: "a-o cards/1_a katakana_1Front", backImageName: "a-o cards/1_a katakana_Back"),
-    Flashcard(frontImageName: "a-o cards/2_i katakana_1Front", backImageName: "a-o cards/2_i katakana_Back"),
-    Flashcard(frontImageName: "a-o cards/3_u katakana_1Front", backImageName: "a-o cards/3_u katakana_Back"),
-    Flashcard(frontImageName: "a-o cards/4_e katakana_1Front", backImageName: "a-o cards/4_e katakana_Back"),
-    Flashcard(frontImageName: "a-o cards/5_o katakana_1Front", backImageName: "a-o cards/5_o katakana_Back"),
-    Flashcard(frontImageName: "ka-ko cards/6_ka katakana_1Front", backImageName: "ka-ko cards/6_ka katakana_Back"),
-    Flashcard(frontImageName: "ka-ko cards/7_ki katakana_1Front", backImageName: "ka-ko cards/7_ki katakana_Back"),
-    Flashcard(frontImageName: "ka-ko cards/8_ku katakana_1Front", backImageName: "ka-ko cards/8_ku katakana_Back"),
-    // Add more flashcards here
-]
+import CoreData
 
 struct CharacterGroup: Identifiable {
     let id = UUID()
@@ -47,6 +31,7 @@ let characterGroups: [CharacterGroup] = [
     ])
 ]
 
+
 let allSoundOptions: [String: String] = [
     "ア": "a-o/1_A",
     "イ": "a-o/2_I",
@@ -58,26 +43,26 @@ let allSoundOptions: [String: String] = [
     "ク": "ka-ko/8_KU",
     "ケ": "ka-ko/9_KE",
     "コ": "ka-ko/10_KO",
-    "サ": "sa-so/11_SA",
-    "シ": "sa-so/12_SHI",
-    "ス": "sa-so/13_SU",
-    "セ": "sa-so/14_SE",
-    "ソ": "sa-so/15_SO",
-    "タ": "sa-so/16_TA",
-    "チ": "sa-so/17_CHI",
-    "ツ": "sa-so/18_TSU",
-    "テ": "sa-so/19_TE",
-    "ト": "sa-so/20_TO",
-    "ナ": "na-no/21_NA",
-    "ニ": "na-no/22_NI",
-    "ヌ": "na-no/23_NU",
-    "ネ": "na-no/24_NE",
-    "ノ": "na-no/25_NO",
-    "ハ": "na-no/26_HA",
-    "ヒ": "na-no/27_HI",
-    "フ": "na-no/28_FU",
-    "ヘ": "na-no/29_HE",
-    "ホ": "na-no/30_HO",
+    "サ": "sa-to/11_SA",
+    "シ": "sa-to/12_SHI",
+    "ス": "sa-to/13_SU",
+    "セ": "sa-to/14_SE",
+    "ソ": "sa-to/15_SO",
+    "タ": "sa-to/16_TA",
+    "チ": "sa-to/17_CHI",
+    "ツ": "sa-to/18_TSU",
+    "テ": "sa-to/19_TE",
+    "ト": "sa-to/20_TO",
+    "ナ": "na-ho/21_NA",
+    "ニ": "na-ho/22_NI",
+    "ヌ": "na-ho/23_NU",
+    "ネ": "na-ho/24_NE",
+    "ノ": "na-ho/25_NO",
+    "ハ": "na-ho/26_HA",
+    "ヒ": "na-ho/27_HI",
+    "フ": "na-ho/28_FU",
+    "ヘ": "na-ho/29_HE",
+    "ホ": "na-ho/30_HO",
     "マ": "ma-n/31_MA",
     "ミ": "ma-n/32_MI",
     "ム": "ma-n/33_MU",
@@ -151,9 +136,9 @@ let allSoundOptions: [String: String] = [
     "リョ": "combination characters/102_RYO"
 ]
 
-struct MenuView: View {
-    @State private var selectedGroups = Set<UUID>()
 
+
+struct MenuView: View {
     func getColor(index: Int) -> Color {
         let colors: [Color] = [.red, .blue, .green, .yellow, .orange, .pink, .purple]
         return colors[index % colors.count]
@@ -166,251 +151,132 @@ struct MenuView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
-
+                
                 VStack(spacing: 10) {
                     ForEach(characterGroups.indices, id: \.self) { index in
-                        Button(action: {
-                            let id = characterGroups[index].id
-                            if selectedGroups.contains(id) {
-                                selectedGroups.remove(id)
-                            } else {
-                                selectedGroups.insert(id)
-                            }
-                        }) {
-                            HStack {
-                                if selectedGroups.contains(characterGroups[index].id) {
-                                    Image(systemName: "checkmark")
-                                }
-                                Text(characterGroups[index].title)
-                            }
-                            .padding()
-                            .frame(width: 180)
-                            .background(getColor(index: index)) // Different color for each button
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                        NavigationLink(destination: KatakanaFlashcardsView(group: characterGroups[index])) {
+                            Text(characterGroups[index].title)
+                                .padding()
+                                .font(Font.custom("Comic Sans MS", size: 20))
+                                .frame(width: 180)
+                                .background(getColor(index: index)) // Different color for each button
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                         }
                         .padding([.leading, .trailing], 20)
                     }
-
-                    NavigationLink(destination: KatakanaFlashcardsView(groups: characterGroups.filter { selectedGroups.contains($0.id) })) {
-                        Text("Start")
-                            .padding()
-                            .frame(width: 180)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                    .padding([.leading, .trailing], 20)
-                    .disabled(selectedGroups.isEmpty)
-                    .opacity(selectedGroups.isEmpty ? 0.5 : 1.0)
-
-                    Spacer()
+                    .navigationTitle("Katakana Groups")
                 }
-                .navigationTitle("Katakana Groups")
             }
         }
     }
 }
 
 struct KatakanaFlashcardsView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var currentCharacter = ("", "")
-    @State private var soundPlayer: AVAudioPlayer?
-    @State private var isShowingBack = false
-    @State private var drawing: Path = Path()
-    @State private var strokeOrderImage: String = ""
-
-    let groups: [CharacterGroup]
-
+    @State var soundPlayer: AVAudioPlayer?
+    
+    let group: CharacterGroup
+    
     var body: some View {
         ZStack {
             Image("Faded_BG")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-
+            
             VStack(spacing: 20) {
-                if !isShowingBack {
-                    FlashcardFrontView(imageName: currentCharacter.0)
-                        .onAppear(perform: getRandomKatakanaCharacter)
-                        .transition(.scale)
-                } else {
-                    FlashcardBackView(imageName: currentCharacter.0, character: currentCharacter.0, pronunciation: currentCharacter.1, strokeOrderImage: strokeOrderImage, drawing: $drawing)
-                        .transition(.scale)
-
-                }
-
+                Text(currentCharacter.0)
+                    .font(Font.custom("UDDigiKyokashoN-B", size: 100))
+                    .onAppear(perform: getRandomKatakanaCharacter)
+                
+                Text(currentCharacter.1)
+                    .font(Font.custom("Comic Sans MS", size: 60))
+                    .foregroundColor(.red)
+                
                 Button(action: {
                     playAudio()
                 }) {
                     Text("Pronunciation")
                 }
                 .padding()
+                .font(Font.custom("Comic Sans MS", size: 20))
                 .frame(width: 180)
                 .background(Color.pink)
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .padding([.leading, .trailing], 20)
-
-                Button(action: {
-                    getRandomKatakanaCharacter()
-                    isShowingBack = false
-                }) {
+                
+                Button(action: getRandomKatakanaCharacter) {
                     Text("Next")
                         .padding()
+                        .font(Font.custom("Comic Sans MS", size: 20))
                         .frame(width: 180)
-                        .background(Color.blue)
+                        .background(Color.purple)
                         .foregroundColor(.white)
                         .cornerRadius(10)
+                        .padding([.leading, .trailing], 20)
                 }
-                .padding([.leading, .trailing], 20)
-
+                
                 Button(action: {
-                    isShowingBack.toggle()
+                    withAnimation {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 }) {
-                    Text(isShowingBack ? "Show Front" : "Show Back")
+                    Text("Back to Main Menu")
+                        .padding()
+                        .font(Font.custom("Comic Sans MS", size: 20))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.secondary)
+                        .foregroundColor(.primary)
+                        .cornerRadius(10)
+                        .padding([.leading, .trailing], 20)
                 }
-                .padding()
-                .frame(width: 180)
-                .background(Color.green)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding([.leading, .trailing], 20)
-
-                Spacer()
             }
-            .navigationTitle("Katakana Flashcards")
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading:
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.left")
-                    Text("Back")
-                }
-            )
         }
+        .navigationBarTitle("Katakana Flashcards", displayMode: .large)
     }
-
+    
     func getRandomKatakanaCharacter() {
-        if let group = groups.randomElement(),
-           let character = group.characters.randomElement() {
-            currentCharacter = character
-            soundPlayer = loadAudio(audioName: allSoundOptions[character.0] ?? "")
-            strokeOrderImage = "StrokeOrder/\(character.0)"
-        }
+        let randomIndex = Int.random(in: 0..<group.characters.count)
+        currentCharacter = group.characters[randomIndex]
     }
-
-    func loadAudio(audioName: String) -> AVAudioPlayer? {
-        if let soundURL = Bundle.main.url(forResource: audioName, withExtension: "mp3") {
-            do {
-                let player = try AVAudioPlayer(contentsOf: soundURL)
-                return player
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
-
+    
     func playAudio() {
-        soundPlayer?.stop()
-        soundPlayer?.currentTime = 0.0
-        soundPlayer?.play()
+        let character = currentCharacter.0
+        guard let soundName = allSoundOptions[character] else {
+            print("Unable to find sound for character \(character)")
+            return
+        }
+        
+        playSound(soundName: soundName)
     }
-}
-
-struct FlashcardFrontView: View {
-    let imageName: String
-
-    var body: some View {
-        Image(imageName)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-    }
-}
-
-
-struct FlashcardBackView: View {
-    let imageName: String
-    let character: String
-    let pronunciation: String
-    let strokeOrderImage: String
-    @Binding var drawing: Path
-
-    var body: some View {
-        VStack {
-            Image(imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding()
-
-            Text(character)
-                .font(.system(size: 120))
-                .foregroundColor(.black)
-
-            Text(pronunciation)
-                .font(.title)
-                .foregroundColor(.black)
-
-            Image(strokeOrderImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding()
-
-            DrawingView(drawing: $drawing)
-                .aspectRatio(contentMode: .fit)
-                .padding()
-
-            Spacer()
-
-            Button(action: {
-                drawing = Path()
-            }) {
-                Text("Clear Drawing")
-                    .font(.title)
-            }
-            .padding()
+    
+    func playSound(soundName: String) {
+        let soundNameComponents = soundName.components(separatedBy: "/")
+        guard soundNameComponents.count == 2 else {
+            print("Incorrect sound name format: \(soundName)")
+            return
+        }
+        
+        let filename = soundNameComponents[1]
+        
+        guard let url = Bundle.main.url(forResource: filename, withExtension: "mp3") else {
+            print("Could not find sound file: \(filename).mp3")
+            return
+        }
+        
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOf: url)
+            soundPlayer?.play()
+        } catch {
+            print("Failed to play sound: \(error)")
         }
     }
 }
-
-
-struct DrawingView: View {
-    @Binding var drawing: Path
-    @GestureState private var gestureLocation: CGPoint = .zero
-
-    var body: some View {
-        let currentDrawing = drawing
-        let dragGesture = DragGesture(minimumDistance: 0)
-            .updating($gestureLocation) { (value, gestureLocation, _) in
-                gestureLocation = value.location
-            }
-            .onChanged { value in
-                let location = value.location
-                drawing.addLine(to: location)
-            }
-            .onEnded { _ in
-                drawing = currentDrawing
-            }
-
-        Path { path in
-            path.move(to: CGPoint.zero)
-        }
-        .stroke(Color.black, lineWidth: 2)
-        .background(Color.white)
-        .overlay(
-            Path { path in
-                path.addPath(drawing)
-            }
-            .stroke(Color.black, lineWidth: 2)
-            .background(Color.clear)
-            .gesture(dragGesture)
-        )
-        .clipped()
-    }
-}
-
 struct ContentView_Previews1: PreviewProvider {
     static var previews: some View {
         MenuView()
