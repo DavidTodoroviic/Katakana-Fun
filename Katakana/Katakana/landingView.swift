@@ -13,32 +13,31 @@ struct LandingView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
-                Text("Katakana Fun") // Title
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.white)
+                Image("Logo no white") // Additional image
+                    .resizable()
+                    .scaledToFit() // Ensures that the image scales correctly
+                    .frame(maxWidth: .infinity) // Makes the image take up as much space as it can
                 
                 Spacer()
                 
-                VStack(spacing: 20) {
-                    Image("Japres LOGO_TM Background Removed") // Third logo image name
+                HStack {
+                    Image("Katakana crane 1") // Crane image 1
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 300, height: 300)
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
                     
-                    HStack(spacing: 20) {
-                        Image("") // First logo image name
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
-                        
-                        Image("") // Second logo image name
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
-                    }
+                    Image("Title Landing") // Title image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 100)
+                    
+                    Image("Katakana crane 2") // Crane image 2
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .scaleEffect(x: -1, y: 1, anchor: .center) // Flip the image horizontally
                 }
+                .frame(maxWidth: .infinity)
                 
                 Spacer()
                 
@@ -47,13 +46,13 @@ struct LandingView: View {
                         self.showContent = true
                     }
                 }) {
-                    Text("Start Game") // Start game button
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.accentColor)
+                    Image("Start") // Start game button image
+                        .resizable()
+                        .scaledToFit() // Ensures that the image scales correctly
+                        .frame(maxWidth: 200, maxHeight: 60)
                         .cornerRadius(10)
                 }
+                .frame(maxWidth: .infinity) // Makes the button take up as much space as it can
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 40)

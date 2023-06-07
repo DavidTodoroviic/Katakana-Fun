@@ -48,18 +48,18 @@ struct Game1MainView: View {
                 VStack {
                     // Game title
                     Text("Game 1")
-                        .font(.largeTitle)
+                        .font(.custom("Comic Sans MS", size: 70))
                         .padding()
 
                     // Second heading
                     Text("Select Alphabet")
-                        .font(.title2)
+                        .font(.custom("Comic Sans MS", size: 40))
                         .padding()
 
                     // Start button
                     NavigationLink(destination: Game1ScreenView(selectedGroup: selectedGroup ?? Character1Group(title: "", characters: []))) {
                         Text("Start")
-                            .font(.headline)
+                            .font(.custom("Comic Sans MS", size: 40))
                             .padding()
                             .background(Color.blue)
                             .foregroundColor(.white)
@@ -82,6 +82,7 @@ struct Game1MainView: View {
                                     }) {
                                         Text(group.title)
                                             .padding()
+                                            .font(.custom("Comic Sans MS", size: 20))
                                             .background(selectedGroup?.title == group.title ? Color.green : Color.gray)
                                             .foregroundColor(.white)
                                             .cornerRadius(10)
@@ -96,6 +97,7 @@ struct Game1MainView: View {
                         }) {
                             Text(lastGroup.title)
                                 .padding()
+                                .font(.custom("Comic Sans MS", size: 20))
                                 .background(selectedGroup?.title == lastGroup.title ? Color.green : Color.gray)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
@@ -109,6 +111,7 @@ struct Game1MainView: View {
                         NavigationLink(destination: ContentView()) {
                             Text("Menu")
                                 .padding()
+                                .font(.custom("Comic Sans MS", size: 30))
                                 .background(Color.green)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
@@ -116,6 +119,7 @@ struct Game1MainView: View {
                         NavigationLink(destination: Game1InfoView()) {
                             Text("Info")
                                 .padding()
+                                .font(.custom("Comic Sans MS", size: 30))
                                 .background(Color.orange)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
