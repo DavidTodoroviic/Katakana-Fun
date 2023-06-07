@@ -115,7 +115,7 @@ struct Game2ScreenView: View {
                                             chosen_group_kata = a_kata
                                         }
                                         // randomise lists
-                                        kata_indices = get_random_indices()
+                                        //kata_indices = get_random_indices()
                                         randomise() // also makes sure there is a correct option
                                         // init score
                                         score = 0
@@ -132,11 +132,11 @@ struct Game2ScreenView: View {
         if score == 10
         {
             ZStack {
-                Image("Game 2 win")
+                Image("game 2 win fixed")
                     .resizable()
                     .scaledToFill()
-                    .scaleEffect(1.25)
-                    .padding(.trailing, 40)
+                    .scaleEffect(1.3)
+                    .padding(.trailing, 735) // fix for phone?
             }
         }
         
@@ -183,6 +183,7 @@ struct Game2ScreenView: View {
                                 }
                                 curr_guess = chosen_group_eng[kata_indices[0]]
                                 check_win()
+                                randomise()
                             } // close brace for ontapgesture
                         
                         Image(chosen_group_kata[kata_indices[1]])
@@ -199,6 +200,7 @@ struct Game2ScreenView: View {
                                 }
                                 curr_guess = chosen_group_eng[kata_indices[1]]
                                 check_win()
+                                randomise()
                             } // close brace for ontapgesture
                     } // close brace for HStack 1
                     
@@ -218,6 +220,7 @@ struct Game2ScreenView: View {
                                 }
                                 curr_guess = chosen_group_eng[kata_indices[2]]
                                 check_win()
+                                randomise()
                             } // close brace for ontapgesture
                     } // close brace for HStack 2
                     
@@ -237,6 +240,7 @@ struct Game2ScreenView: View {
                                 }
                                 curr_guess = chosen_group_eng[kata_indices[3]]
                                 check_win()
+                                randomise()
                             } // close brace for ontapgesture
                         
                         Image(chosen_group_kata[kata_indices[4]])
@@ -253,6 +257,7 @@ struct Game2ScreenView: View {
                                 }
                                 curr_guess = chosen_group_eng[kata_indices[4]]
                                 check_win()
+                                randomise()
                             } // close brace for ontapgesture
                     } // close brace for HStack 3
                 } // close brace for VStack
@@ -312,10 +317,13 @@ struct Game2ScreenView: View {
     
     func randomise()
     {
+        kata_indices = get_random_indices() // get random indices
         index = get_random_index() // this is the winning word
         
         // assign kata_indices[0] to this index
-        kata_indices[0] = index
+        if !kata_indices.contains(index) {
+            kata_indices[0] = index
+        }
         
         // assign winner
         winner = chosen_group_eng[index]
